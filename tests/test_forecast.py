@@ -59,6 +59,36 @@ class ForecastTests(unittest.TestCase):
             self.assertEqual(by_id[eliminated].win_championship_pct, 0)
             self.assertEqual(by_id[eliminated].make_final_pct, 0)
 
+    def test_early_season_playoff_odds_are_shrunk_away_from_zero_and_one_hundred(self):
+        result = make_result(week=3)
+        attach_forecast(result, simulations=1000)
+        odds = [team.make_playoffs_pct for team in result.teams]
+        self.assertLess(max(odds), 90)
+        self.assertGreater(min(odds), 10)
+
+    def test_guardrails_relax_as_regular_season_progresses(self):
+        early = make_result(week=3)
+        late = make_result(week=14)
+        attach_forecast(early, simulations=1000)
+        attach_forecast(late, simulations=1000)
+        early_by_id = {team.roster_id: team for team in early.teams}
+        late_by_id = {team.roster_id: team for team in late.teams}
+        self.assertGreater(late_by_id[1].make_playoffs_pct, early_by_id[1].make_playoffs_pct)
+        self.assertLess(late_by_id[4].make_playoffs_pct, early_by_id[4].make_playoffs_pct)
+
+    def test_all_playoff_league_remains_structural_one_hundred_percent(self):
+        result = make_result(week=3)
+        result.league.playoff_teams = len(result.teams)
+        attach_forecast(result, simulations=500)
+        self.assertTrue(all(team.make_playoffs_pct == 100.0 for team in result.teams))
+
+    def test_early_season_championship_odds_do_not_show_zero_or_one_hundred(self):
+        result = make_result(week=3)
+        attach_forecast(result, simulations=1000)
+        odds = [team.win_championship_pct for team in result.teams]
+        self.assertGreater(min(odds), 0)
+        self.assertLess(max(odds), 100)
+
 
 if __name__ == "__main__":
     unittest.main()
