@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated Discord gallery previews; league history is intentionally tracked.
+exports/
