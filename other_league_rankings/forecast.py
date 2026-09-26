@@ -36,16 +36,68 @@ def attach_forecast(result: RankingResult, simulations: int = DEFAULT_SIMULATION
         _simulate_active(snapshot, probabilities, counts, simulations, rng)
     else:
         _simulate_season(snapshot, probabilities, remaining, counts, simulations, rng)
+
+    progress = _regular_season_progress(snapshot)
+    team_count = len(snapshot.teams)
+    playoff_count = min(team_count, max(2, snapshot.playoff_teams))
+    bracket_size = 1 << (playoff_count - 1).bit_length()
+    bye_count = max(0, bracket_size - playoff_count)
+    division_sizes: dict[int, int] = {}
+    if snapshot.divisions > 1:
+        for league_team in snapshot.teams:
+            if league_team.division > 0:
+                division_sizes[league_team.division] = division_sizes.get(league_team.division, 0) + 1
+
+    teams_by_id = {team.roster_id: team for team in snapshot.teams}
     for team in result.teams:
         values = counts[team.roster_id]
+        league_team = teams_by_id[team.roster_id]
         team.projected_record = projected_records[team.roster_id]
-        team.make_playoffs_pct = round(values["playoffs"] / simulations * 100, 1)
-        team.win_division_pct = round(values["division"] / simulations * 100, 1)
-        team.first_round_bye_pct = round(values["bye"] / simulations * 100, 1)
-        team.make_final_pct = round(values["final"] / simulations * 100, 1)
-        team.win_championship_pct = round(values["champion"] / simulations * 100, 1)
+
+        raw_playoffs = values["playoffs"] / simulations * 100
+        raw_division = values["division"] / simulations * 100
+        raw_bye = values["bye"] / simulations * 100
+        raw_final = values["final"] / simulations * 100
+        raw_champion = values["champion"] / simulations * 100
+
+        playoff_baseline = playoff_count / team_count * 100
+        division_baseline = (
+            100 / division_sizes[league_team.division]
+            if league_team.division in division_sizes
+            else 0.0
+        )
+        bye_baseline = bye_count / team_count * 100
+        final_baseline = min(2, team_count) / team_count * 100
+        champion_baseline = 100 / team_count
+
+        team.make_playoffs_pct = _confidence_adjust(raw_playoffs, playoff_baseline, progress)
+        team.win_division_pct = _confidence_adjust(raw_division, division_baseline, progress)
+        team.first_round_bye_pct = _confidence_adjust(raw_bye, bye_baseline, progress)
+        team.make_final_pct = _confidence_adjust(raw_final, final_baseline, progress)
+        team.win_championship_pct = _confidence_adjust(raw_champion, champion_baseline, progress)
     result.forecast_simulations = simulations
-    result.forecast_model = f"{result.lineup_sources[0] if result.lineup_sources else 'starter values'} + Sleeper schedule"
+    result.forecast_model = f"{result.lineup_sources[0] if result.lineup_sources else 'starter values'} + Sleeper schedule · week-calibrated"
+
+
+def _regular_season_progress(snapshot: LeagueSnapshot) -> float:
+    regular_season_weeks = max(1, snapshot.playoff_week_start - snapshot.start_week)
+    completed_weeks = max(0, min(regular_season_weeks, snapshot.week - snapshot.start_week))
+    return completed_weeks / regular_season_weeks
+
+
+def _confidence_adjust(raw_pct: float, baseline_pct: float, progress: float) -> float:
+    """Apply week-based confidence bounds around the structural league baseline.
+
+    At the start of the season the public forecast is a 50/50 blend of the
+    Monte Carlo result and the event's neutral league-wide baseline. The raw
+    model gains weight every week until it is used without shrinkage when the
+    playoffs begin. Because raw probabilities are bounded at 0 and 100, this
+    blend creates a natural floor and ceiling that relax every week without
+    distorting the total probability mass for an event.
+    """
+    blend = 0.5 + 0.5 * max(0.0, min(1.0, progress))
+    adjusted = baseline_pct + blend * (raw_pct - baseline_pct)
+    return round(max(0.0, min(100.0, adjusted)), 1)
 
 
 def rating_probabilities(ratings: dict[int, float]) -> dict[int, float]:
