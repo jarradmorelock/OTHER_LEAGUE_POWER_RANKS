@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "other-league-power-ranks"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["matplotlib>=3.8,<4", "requests>=2.32,<3"]
+
+[tool.setuptools.packages.find]
+include = ["other_league_rankings*"]
