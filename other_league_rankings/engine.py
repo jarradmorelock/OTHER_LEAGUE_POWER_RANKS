@@ -50,7 +50,9 @@ def ranking_weights(completed_weeks: int) -> tuple[float, float, float]:
     """Increase real-season influence every completed NFL week through Week 8."""
     if completed_weeks <= 0:
         return (0.45, 0.55, 0.0)
-    progress = min(1.0, max(0.0, (completed_weeks - 1) / 7.0))
+    if completed_weeks >= 8:
+        return (0.25, 0.35, 0.40)
+    progress = max(0.0, (completed_weeks - 1) / 7.0)
     return (
         0.35 - 0.10 * progress,
         0.45 - 0.10 * progress,
@@ -62,7 +64,9 @@ def sec_ranking_weights(completed_weeks: int) -> tuple[float, float, float, floa
     """Smoothly shift SEC weight toward results while retaining its IDP layer."""
     if completed_weeks <= 0:
         return (0.45, 0.55, 0.0, 0.0)
-    progress = min(1.0, max(0.0, (completed_weeks - 1) / 7.0))
+    if completed_weeks >= 8:
+        return (0.20, 0.30, 0.40, 0.10)
+    progress = max(0.0, (completed_weeks - 1) / 7.0)
     return (
         0.30 - 0.10 * progress,
         0.35 - 0.05 * progress,
