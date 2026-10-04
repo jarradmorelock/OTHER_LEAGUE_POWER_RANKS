@@ -9,7 +9,18 @@
       "mode": "full",
       "expected_bonus_rec_te": null,
       "webhook_env": "BROKEN_HEARTS_WEEKLY_WEBHOOK",
-      "theme": {"background":"#101217","panel":"#2D2330","text":"#F6E9EC","muted":"#B4A3AA","market":"#D16B7B","lineup":"#E5A34D","season":"#8291A5","accent":"#EF7890"}
+      "theme": {
+        "background": "#101217",
+        "panel": "#2D2330",
+        "text": "#F6E9EC",
+        "muted": "#B4A3AA",
+        "market": "#D16B7B",
+        "lineup": "#E5A34D",
+        "season": "#8291A5",
+        "accent": "#EF7890"
+      },
+      "market_mode": "keeper_redraft",
+      "keeper_dynasty_share": 0.2
     },
     "rocky_top_rumble": {
       "league_id": "1314710277232553984",
@@ -20,7 +31,18 @@
       "mode": "full",
       "expected_bonus_rec_te": null,
       "webhook_env": "ROCKY_TOP_RUMBLE_WEEKLY_WEBHOOK",
-      "theme": {"background":"#11100F","panel":"#33281F","text":"#FFF2DE","muted":"#B5A38E","market":"#D97831","lineup":"#E3B44B","season":"#788B7C","accent":"#F0873E"}
+      "theme": {
+        "background": "#11100F",
+        "panel": "#33281F",
+        "text": "#FFF2DE",
+        "muted": "#B5A38E",
+        "market": "#D97831",
+        "lineup": "#E3B44B",
+        "season": "#788B7C",
+        "accent": "#F0873E"
+      },
+      "market_mode": "keeper_redraft",
+      "keeper_dynasty_share": 0.2
     },
     "nine_to_five": {
       "league_id": "1314710193413554176",
@@ -31,7 +53,18 @@
       "mode": "full",
       "expected_bonus_rec_te": null,
       "webhook_env": "NINE_TO_FIVE_WEEKLY_WEBHOOK",
-      "theme": {"background":"#111318","panel":"#202A35","text":"#EEF3F6","muted":"#9CAAB5","market":"#5B9BD5","lineup":"#E8B24D","season":"#62A78C","accent":"#8ABAE8"}
+      "theme": {
+        "background": "#111318",
+        "panel": "#202A35",
+        "text": "#EEF3F6",
+        "muted": "#9CAAB5",
+        "market": "#5B9BD5",
+        "lineup": "#E8B24D",
+        "season": "#62A78C",
+        "accent": "#8ABAE8"
+      },
+      "market_mode": "keeper_redraft",
+      "keeper_dynasty_share": 0.2
     },
     "best_characters": {
       "league_id": "1333195168139968512",
@@ -42,7 +75,16 @@
       "mode": "full",
       "expected_bonus_rec_te": 0.5,
       "webhook_env": "BEST_CHARACTERS_WEEKLY_WEBHOOK",
-      "theme": {"background":"#101216","panel":"#242A35","text":"#F0F2F6","muted":"#9EA8B7","market":"#A77CE5","lineup":"#51B5A0","season":"#E6B84E","accent":"#B993F0"}
+      "theme": {
+        "background": "#101216",
+        "panel": "#242A35",
+        "text": "#F0F2F6",
+        "muted": "#9EA8B7",
+        "market": "#A77CE5",
+        "lineup": "#51B5A0",
+        "season": "#E6B84E",
+        "accent": "#B993F0"
+      }
     },
     "sec": {
       "league_id": "1341161857683058688",
@@ -54,7 +96,17 @@
       "defense_weight": 0.15,
       "expected_bonus_rec_te": 1.5,
       "webhook_env": "SEC_WEEKLY_WEBHOOK",
-      "theme": {"background":"#101312","panel":"#25362D","text":"#F1F6E9","muted":"#A5B5A8","market":"#D6B64A","lineup":"#76A86C","defense":"#C98258","season":"#8094A1","accent":"#E3C65B"}
+      "theme": {
+        "background": "#101312",
+        "panel": "#25362D",
+        "text": "#F1F6E9",
+        "muted": "#A5B5A8",
+        "market": "#D6B64A",
+        "lineup": "#76A86C",
+        "defense": "#C98258",
+        "season": "#8094A1",
+        "accent": "#E3C65B"
+      }
     },
     "dont_tell_my_wife": {
       "league_id": "1341970851624402944",
@@ -63,9 +115,18 @@
       "publication": "DON'T TELL MY WIFE WEEKLY",
       "quarterback_mode": "auto",
       "mode": "full",
-      "expected_bonus_rec_te": 0.0,
+      "expected_bonus_rec_te": 0,
       "webhook_env": "DONT_TELL_MY_WIFE_WEEKLY_WEBHOOK",
-      "theme": {"background":"#111313","panel":"#283136","text":"#ECF5F4","muted":"#97AAA9","market":"#43A5A0","lineup":"#E9B955","season":"#8295A4","accent":"#5EC4BC"}
+      "theme": {
+        "background": "#111313",
+        "panel": "#283136",
+        "text": "#ECF5F4",
+        "muted": "#97AAA9",
+        "market": "#43A5A0",
+        "lineup": "#E9B955",
+        "season": "#8295A4",
+        "accent": "#5EC4BC"
+      }
     }
   }
 }
