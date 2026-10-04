@@ -10,6 +10,7 @@ from .models import LeagueConfig, Theme
 
 QUARTERBACK_MODES = {"auto", "one_qb"}
 LEAGUE_MODES = {"full", "offense_only_partial"}
+MARKET_MODES = {"dynasty", "keeper_redraft"}
 THEME_KEYS = {
     "background",
     "panel",
@@ -71,8 +72,16 @@ def load_leagues(path: Path) -> dict[str, LeagueConfig]:
         if expected_bonus is not None and not isinstance(expected_bonus, (int, float)):
             raise ValueError(f"League {key!r} expected_bonus_rec_te must be numeric or null")
         defense_weight = item.get("defense_weight", 0.0)
+        market_mode = str(item.get("market_mode") or "dynasty")
+        keeper_dynasty_share = item.get("keeper_dynasty_share", 1.0)
         if isinstance(defense_weight, bool) or not isinstance(defense_weight, (int, float)) or not 0 <= defense_weight < 1:
             raise ValueError(f"League {key!r} defense_weight must be numeric and between 0 inclusive and 1 exclusive")
+        if market_mode not in MARKET_MODES:
+            raise ValueError(f"League {key!r} has unsupported market_mode {market_mode!r}")
+        if isinstance(keeper_dynasty_share, bool) or not isinstance(keeper_dynasty_share, (int, float)) or not 0 <= keeper_dynasty_share <= 1:
+            raise ValueError(f"League {key!r} keeper_dynasty_share must be numeric and between 0 and 1")
+        if market_mode == "dynasty" and float(keeper_dynasty_share) != 1.0:
+            raise ValueError(f"League {key!r} dynasty market_mode requires keeper_dynasty_share=1.0")
 
         output[key] = LeagueConfig(
             key=key,
@@ -86,5 +95,7 @@ def load_leagues(path: Path) -> dict[str, LeagueConfig]:
             expected_bonus_rec_te=float(expected_bonus) if expected_bonus is not None else None,
             theme=Theme(**colors),
             defense_weight=float(defense_weight),
+            market_mode=market_mode,
+            keeper_dynasty_share=float(keeper_dynasty_share),
         )
     return output

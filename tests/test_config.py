@@ -23,6 +23,16 @@ class ConfigTests(unittest.TestCase):
         self.assertEqual(leagues["best_characters"].quarterback_mode, "one_qb")
         self.assertEqual(leagues["sec"].quarterback_mode, "one_qb")
 
+    def test_redraft_keeper_leagues_use_redraft_led_market(self):
+        leagues = load_leagues(ROOT / "leagues.json")
+
+        for key in ("broken_hearts", "rocky_top_rumble", "nine_to_five"):
+            self.assertEqual(leagues[key].market_mode, "keeper_redraft")
+            self.assertEqual(leagues[key].keeper_dynasty_share, 0.20)
+        for key in ("best_characters", "sec", "dont_tell_my_wife"):
+            self.assertEqual(leagues[key].market_mode, "dynasty")
+            self.assertEqual(leagues[key].keeper_dynasty_share, 1.0)
+
     def test_only_sec_has_defense_schedule_enabled(self):
         leagues = load_leagues(ROOT / "leagues.json")
 

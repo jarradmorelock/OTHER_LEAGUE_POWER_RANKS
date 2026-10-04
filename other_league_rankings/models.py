@@ -31,6 +31,8 @@ class LeagueConfig:
     expected_bonus_rec_te: float | None
     theme: Theme
     defense_weight: float = 0.0
+    market_mode: str = "dynasty"
+    keeper_dynasty_share: float = 1.0
 
 
 @dataclass(frozen=True)
@@ -49,6 +51,7 @@ class ValueBook:
     pick_values: dict[tuple[int, str, int], float] = field(default_factory=dict)
     scoring_adjusted: bool = False
     raw_projection: bool = False
+    team_values: dict[int, float] = field(default_factory=dict)
 
 
 @dataclass
@@ -56,6 +59,8 @@ class MarketBundle:
     players: dict[str, PlayerIdentity]
     books: list[ValueBook]
     warnings: list[str] = field(default_factory=list)
+    market_dynasty_share: float = 1.0
+    ros_projection_weeks: list[int] = field(default_factory=list)
 
     @property
     def dynasty_books(self) -> list[ValueBook]:
@@ -68,6 +73,10 @@ class MarketBundle:
     @property
     def defense_books(self) -> list[ValueBook]:
         return [book for book in self.books if book.category == "defense"]
+
+    @property
+    def redraft_market_books(self) -> list[ValueBook]:
+        return [book for book in self.books if book.category == "redraft_market"]
 
 
 @dataclass(frozen=True)
@@ -189,3 +198,5 @@ class RankingResult:
     warnings: list[str] = field(default_factory=list)
     defense_weight: float = 0.0
     defense_sources: list[str] = field(default_factory=list)
+    market_label: str = "Dynasty market"
+    ros_projection_weeks: list[int] = field(default_factory=list)

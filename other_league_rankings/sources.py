@@ -8,6 +8,7 @@ from urllib.parse import urlencode
 
 from .http import DataSourceError
 from .models import LeagueConfig, LeagueSnapshot, MarketBundle, PlayerIdentity, ValueBook
+from .ros import fetch_ros_team_values
 
 
 DYNASTY_DADDY_BASE = "https://dynasty-daddy.com/api/v1"
@@ -20,10 +21,11 @@ MINIMUM_MAPPED_PLAYERS = 25
 
 
 def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) -> MarketBundle:
-    """Load DD signals where available, with FantasyCalc as a category fallback."""
+    """Load market signals plus league-scored remaining-season lineup projections."""
     warnings: list[str] = []
     books: list[ValueBook] = []
     identities: dict[str, PlayerIdentity] = {}
+
     try:
         primary = fetch_dynasty_daddy(client, is_superflex=snapshot.is_superflex, week=snapshot.week)
         identities.update(primary.players)
@@ -32,36 +34,76 @@ def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) 
     except DataSourceError as exc:
         warnings.append(f"Dynasty Daddy unavailable: {exc}")
 
-    existing_categories = {book.category for book in books if book.player_values}
+    fantasy_calc: MarketBundle | None = None
+    try:
+        fantasy_calc = fetch_fantasy_calc(
+            client,
+            is_superflex=snapshot.is_superflex,
+            num_teams=len(snapshot.teams),
+            ppr=snapshot.ppr,
+        )
+        identities.update(fantasy_calc.players)
+        warnings.extend(fantasy_calc.warnings)
+    except DataSourceError as exc:
+        warnings.append(f"FantasyCalc fallback unavailable: {exc}")
+
+    existing_categories = {book.category for book in books if book.player_values or book.team_values}
     missing = {"dynasty", "lineup"} - existing_categories
-    if missing:
-        try:
-            fallback = fetch_fantasy_calc(
-                client,
-                is_superflex=snapshot.is_superflex,
-                num_teams=len(snapshot.teams),
-                ppr=snapshot.ppr,
+    if fantasy_calc is not None:
+        for book in fantasy_calc.books:
+            if book.category in missing:
+                books.append(book)
+                warnings.append(f"Using direct FantasyCalc values as a {book.category} fallback.")
+
+    if config.market_mode == "keeper_redraft":
+        redraft_source = next(
+            (
+                book for book in (fantasy_calc.books if fantasy_calc is not None else [])
+                if book.name == "FantasyCalc Redraft Direct" and book.player_values
+            ),
+            None,
+        )
+        if redraft_source is None:
+            warnings.append(
+                "Redraft market feed unavailable; keeper-league market will fall back to dynasty values."
             )
-            identities.update(fallback.players)
-            warnings.extend(fallback.warnings)
-            for book in fallback.books:
-                if book.category in missing:
-                    books.append(book)
-            for category in sorted(missing):
-                warnings.append(f"Using direct FantasyCalc values as a {category} fallback.")
-        except DataSourceError as exc:
-            warnings.append(f"FantasyCalc fallback unavailable: {exc}")
+        else:
+            books.append(
+                ValueBook(
+                    name="FantasyCalc Redraft Market",
+                    category="redraft_market",
+                    player_values=dict(redraft_source.player_values),
+                )
+            )
 
     for category in ("dynasty", "lineup"):
-        if not any(book.category == category and book.player_values for book in books):
+        if not any(
+            book.category == category and (book.player_values or book.team_values)
+            for book in books
+        ):
             raise DataSourceError(f"No usable {category} value source was available for {config.key}")
 
-    if config.expected_bonus_rec_te is not None and config.expected_bonus_rec_te > 0:
+    _augment_rostered_identities(client, snapshot, identities)
+
+    ros_values, ros_weeks, ros_warnings = fetch_ros_team_values(
+        client, snapshot, identities
+    )
+    warnings.extend(ros_warnings)
+    if ros_values:
+        books = [book for book in books if book.category != "lineup"]
+        books.append(
+            ValueBook(
+                name="Sleeper ROS scoring projections",
+                category="lineup",
+                scoring_adjusted=True,
+                team_values=ros_values,
+            )
+        )
+    elif config.expected_bonus_rec_te is not None and config.expected_bonus_rec_te > 0:
         if not any(book.scoring_adjusted for book in books if book.category == "lineup"):
             warnings.append(
                 f"TE premium ({config.expected_bonus_rec_te:g} bonus reception points) is not incorporated by generic player rankings."
             )
-    _augment_rostered_identities(client, snapshot, identities)
 
     rostered_offense = {
         player_id
@@ -79,12 +121,20 @@ def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) 
         )
     if not rostered_offense:
         warnings.append("No rostered offensive players were identity-mapped by the selected ranking sources.")
+
     if config.mode == "offense_only_partial":
         defense_book, defense_warnings = fetch_sleeper_idp_projections(client, snapshot, identities)
         warnings.extend(defense_warnings)
         if defense_book is not None:
             books.append(defense_book)
-    return MarketBundle(players=identities, books=books, warnings=warnings)
+
+    return MarketBundle(
+        players=identities,
+        books=books,
+        warnings=warnings,
+        market_dynasty_share=config.keeper_dynasty_share if config.market_mode == "keeper_redraft" else 1.0,
+        ros_projection_weeks=ros_weeks,
+    )
 
 
 def fetch_sleeper_idp_projections(

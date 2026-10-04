@@ -46,25 +46,48 @@ class _TeamScore:
     record_guardrail_applied: bool = False
 
 
-def ranking_weights(completed_games: int) -> tuple[float, float, float]:
-    if completed_games <= 0:
+def ranking_weights(completed_weeks: int) -> tuple[float, float, float]:
+    """Increase real-season influence every completed NFL week through Week 8."""
+    if completed_weeks <= 0:
         return (0.45, 0.55, 0.0)
-    if completed_games <= 3:
-        return (0.35, 0.45, 0.20)
-    if completed_games <= 7:
-        return (0.30, 0.40, 0.30)
-    return (0.25, 0.35, 0.40)
+    if completed_weeks >= 8:
+        return (0.25, 0.35, 0.40)
+    progress = max(0.0, (completed_weeks - 1) / 7.0)
+    return (
+        0.35 - 0.10 * progress,
+        0.45 - 0.10 * progress,
+        0.20 + 0.20 * progress,
+    )
 
 
-def sec_ranking_weights(completed_games: int) -> tuple[float, float, float, float]:
-    """Return SEC-only market, offense, results, and raw IDP projection weights."""
-    if completed_games <= 0:
+def sec_ranking_weights(completed_weeks: int) -> tuple[float, float, float, float]:
+    """Smoothly shift SEC weight toward results while retaining its IDP layer."""
+    if completed_weeks <= 0:
         return (0.45, 0.55, 0.0, 0.0)
-    if completed_games <= 3:
-        return (0.30, 0.35, 0.20, 0.15)
-    if completed_games <= 7:
-        return (0.25, 0.32, 0.30, 0.13)
-    return (0.20, 0.30, 0.40, 0.10)
+    if completed_weeks >= 8:
+        return (0.20, 0.30, 0.40, 0.10)
+    progress = max(0.0, (completed_weeks - 1) / 7.0)
+    return (
+        0.30 - 0.10 * progress,
+        0.35 - 0.05 * progress,
+        0.20 + 0.20 * progress,
+        0.15 - 0.05 * progress,
+    )
+
+
+def completed_regular_season_weeks(snapshot: LeagueSnapshot) -> int:
+    """Count completed NFL weeks, not Sleeper's possibly doubled median decisions."""
+    completed = {
+        matchup.week
+        for matchup in snapshot.matchups
+        if matchup.week < snapshot.week
+        and (abs(matchup.points_one) > 1e-9 or abs(matchup.points_two) > 1e-9)
+    }
+    if completed:
+        return len(completed)
+    if any(team.games > 0 for team in snapshot.teams):
+        return max(1, min(14, snapshot.week - snapshot.start_week))
+    return 0
 
 
 def rank_league(
@@ -75,7 +98,8 @@ def rank_league(
 ) -> RankingResult:
     previous_ranks = previous_ranks or {}
     dynasty_books = [book for book in bundle.dynasty_books if book.player_values or book.pick_values]
-    lineup_books = [book for book in bundle.lineup_books if book.player_values]
+    redraft_market_books = [book for book in bundle.redraft_market_books if book.player_values]
+    lineup_books = [book for book in bundle.lineup_books if book.player_values or book.team_values]
     if not dynasty_books or not lineup_books:
         raise ValueError("At least one dynasty and one lineup source are required")
     if not 0.0 <= snapshot.defense_weight < 1.0:
@@ -83,6 +107,7 @@ def rank_league(
 
     roster_ids = [team.roster_id for team in snapshot.teams]
     completed_games = max((team.games for team in snapshot.teams), default=0)
+    completed_weeks = completed_regular_season_weeks(snapshot)
     source_totals: dict[str, dict[int, float]] = {}
     source_percentiles: dict[str, dict[int, float]] = {}
     coverage_warnings: list[str] = []
@@ -96,7 +121,29 @@ def rank_league(
                 for pid in team.player_ids
                 if not snapshot.idp_partial or (pid in bundle.players and bundle.players[pid].position in OFFENSE)
             )
-            + sum(_pick_value(book, pick.year, pick.round) for pick in team.picks)
+            + (
+                sum(_pick_value(book, pick.year, pick.round) for pick in team.picks)
+                if bundle.market_dynasty_share >= 0.999
+                else 0.0
+            )
+            for team in snapshot.teams
+        }
+        if max(totals.values(), default=0) > 0:
+            source_totals[book.name] = totals
+            source_percentiles[book.name] = percentile_scores(totals)
+
+    for book in redraft_market_books:
+        if not _has_roster_coverage(snapshot, book, bundle.players, minimum=0.55):
+            coverage_warnings.append(
+                f"Redraft market source {book.name} excluded: at least 55% roster coverage is required for every team."
+            )
+            continue
+        totals = {
+            team.roster_id: sum(
+                book.player_values.get(pid, 0.0)
+                for pid in team.player_ids
+                if not snapshot.idp_partial or (pid in bundle.players and bundle.players[pid].position in OFFENSE)
+            )
             for team in snapshot.teams
         }
         if max(totals.values(), default=0) > 0:
@@ -111,16 +158,27 @@ def rank_league(
     if snapshot.idp_partial:
         starter_slots = [slot for slot in starter_slots if slot in ELIGIBLE]
     for book in lineup_books:
-        if not _has_roster_coverage(snapshot, book, bundle.players, minimum=0.35):
-            coverage_warnings.append(f"Starter source {book.name} excluded: at least 35% roster coverage is required for every team.")
-            continue
-        totals = {
-            team.roster_id: optimal_lineup_value(
-                team.player_ids, starter_slots, bundle.players, book.player_values,
-                one_qb=not snapshot.is_superflex,
-            )
-            for team in snapshot.teams
-        }
+        if book.team_values:
+            totals = {
+                team.roster_id: float(book.team_values.get(team.roster_id, 0.0))
+                for team in snapshot.teams
+            }
+            if any(value <= 0 for value in totals.values()):
+                coverage_warnings.append(
+                    f"ROS source {book.name} excluded: every roster needs a positive remaining-season projection."
+                )
+                continue
+        else:
+            if not _has_roster_coverage(snapshot, book, bundle.players, minimum=0.35):
+                coverage_warnings.append(f"Starter source {book.name} excluded: at least 35% roster coverage is required for every team.")
+                continue
+            totals = {
+                team.roster_id: optimal_lineup_value(
+                    team.player_ids, starter_slots, bundle.players, book.player_values,
+                    one_qb=not snapshot.is_superflex,
+                )
+                for team in snapshot.teams
+            }
         if max(totals.values(), default=0) > 0:
             source_totals[book.name] = totals
             source_percentiles[book.name] = percentile_scores(totals)
@@ -150,7 +208,7 @@ def rank_league(
             source_percentiles[book.name] = percentile_scores(totals)
             defense_sources.append(book.name)
     scheduled_defense_weight = (
-        sec_ranking_weights(completed_games)[3]
+        sec_ranking_weights(completed_weeks)[3]
         if snapshot.idp_partial and snapshot.defense_weight > 0
         else 0.0
     )
@@ -163,10 +221,24 @@ def rank_league(
         }
 
     usable_dynasty = [book.name for book in dynasty_books if book.name in source_percentiles]
+    usable_redraft = [book.name for book in redraft_market_books if book.name in source_percentiles]
     usable_lineup = [book.name for book in lineup_books if book.name in source_percentiles]
     if not usable_dynasty or not usable_lineup:
         raise ValueError("Available sources did not map enough roster values for every team")
-    market_pct = {rid: mean(source_percentiles[name][rid] for name in usable_dynasty) for rid in roster_ids}
+    dynasty_pct = {
+        rid: mean(source_percentiles[name][rid] for name in usable_dynasty)
+        for rid in roster_ids
+    }
+    redraft_pct = {
+        rid: mean(source_percentiles[name][rid] for name in usable_redraft)
+        for rid in roster_ids
+    } if usable_redraft else {}
+    dynasty_share = bundle.market_dynasty_share if usable_redraft else 1.0
+    market_pct = {
+        rid: dynasty_pct[rid] * dynasty_share
+        + redraft_pct.get(rid, dynasty_pct[rid]) * (1.0 - dynasty_share)
+        for rid in roster_ids
+    }
     lineup_pct = {rid: mean(source_percentiles[name][rid] for name in usable_lineup) for rid in roster_ids}
     starter_ratings = {
         rid: source_totals[usable_lineup[0]][rid] if len(usable_lineup) == 1 else lineup_pct[rid]
@@ -183,10 +255,10 @@ def rank_league(
             for rid in roster_ids
         }
     if snapshot.idp_partial and snapshot.defense_weight > 0:
-        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_games)
+        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks)
         defense_weight = scheduled_defense_weight if defense_sources else 0.0
     else:
-        market_weight, lineup_weight, season_weight = ranking_weights(completed_games)
+        market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks)
         defense_weight = 0.0
     scored: list[_TeamScore] = []
     for team in snapshot.teams:
@@ -201,7 +273,7 @@ def rank_league(
             market_points + lineup_points + defense_points + season_points,
         ))
 
-    guardrail_active = completed_games >= GUARDRAIL_MIN_GAMES
+    guardrail_active = completed_weeks >= GUARDRAIL_MIN_GAMES
     if guardrail_active:
         _apply_record_guardrail(scored)
     scored.sort(key=lambda item: (item.score, item.market, item.lineup, item.team.points_for), reverse=True)
@@ -236,7 +308,7 @@ def rank_league(
     return RankingResult(
         league=snapshot,
         teams=ranked,
-        dynasty_sources=usable_dynasty,
+        dynasty_sources=([*usable_redraft, *usable_dynasty] if usable_redraft else usable_dynasty),
         lineup_sources=usable_lineup,
         has_season_results=has_results,
         generated_at=generated_at or datetime.now(timezone.utc).isoformat(),
@@ -247,6 +319,8 @@ def rank_league(
         warnings=[*snapshot.warnings, *bundle.warnings, *coverage_warnings],
         defense_weight=defense_weight,
         defense_sources=defense_sources,
+        market_label=("Roster market" if usable_redraft else "Dynasty market"),
+        ros_projection_weeks=list(bundle.ros_projection_weeks),
     )
 
 

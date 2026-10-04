@@ -1,7 +1,7 @@
 import unittest
 import signal
 
-from other_league_rankings.engine import optimal_idp_lineup_value, optimal_lineup_value, rank_league, ranking_weights, sec_ranking_weights
+from other_league_rankings.engine import completed_regular_season_weeks, optimal_idp_lineup_value, optimal_lineup_value, rank_league, ranking_weights, sec_ranking_weights
 from other_league_rankings.models import LeagueSnapshot, LeagueTeam, MarketBundle, PlayerIdentity, ValueBook
 
 
@@ -22,15 +22,27 @@ def bundle(player_ids, dynasty_values, lineup_values):
 class EngineTests(unittest.TestCase):
     def test_weight_schedule(self):
         self.assertEqual(ranking_weights(0), (0.45, 0.55, 0.0))
-        self.assertEqual(ranking_weights(3), (0.35, 0.45, 0.20))
-        self.assertEqual(ranking_weights(5), (0.30, 0.40, 0.30))
+        self.assertEqual(ranking_weights(1), (0.35, 0.45, 0.20))
+        week_three = ranking_weights(3)
+        self.assertAlmostEqual(week_three[0], 0.3214285714)
+        self.assertAlmostEqual(week_three[1], 0.4214285714)
+        self.assertAlmostEqual(week_three[2], 0.2571428571)
         self.assertEqual(ranking_weights(8), (0.25, 0.35, 0.40))
 
-    def test_sec_weight_schedule_uses_approved_market_offense_results_defense_shares(self):
+    def test_sec_weight_schedule_steps_every_week(self):
         self.assertEqual(sec_ranking_weights(0), (0.45, 0.55, 0.0, 0.0))
-        self.assertEqual(sec_ranking_weights(3), (0.30, 0.35, 0.20, 0.15))
-        self.assertEqual(sec_ranking_weights(5), (0.25, 0.32, 0.30, 0.13))
+        self.assertEqual(sec_ranking_weights(1), (0.30, 0.35, 0.20, 0.15))
+        week_five = sec_ranking_weights(5)
+        self.assertAlmostEqual(week_five[0], 0.2428571429)
+        self.assertAlmostEqual(week_five[1], 0.3214285714)
+        self.assertAlmostEqual(week_five[2], 0.3142857143)
+        self.assertAlmostEqual(week_five[3], 0.1214285714)
         self.assertEqual(sec_ranking_weights(8), (0.20, 0.30, 0.40, 0.10))
+
+    def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
+        teams = [roster(1, ["1"], 4, 2, 300), roster(2, ["2"], 2, 4, 250)]
+        snapshot = basic_snapshot(teams, week=4)
+        self.assertEqual(completed_regular_season_weeks(snapshot), 3)
 
     def test_record_changes_ranking_as_season_weight_grows(self):
         ids = [str(i) for i in range(16)]
@@ -42,7 +54,7 @@ class EngineTests(unittest.TestCase):
         current = rank_league(basic_snapshot(teams, week=5), bundle(ids, dynasty, lineup))
 
         self.assertEqual(current.teams[0].roster_id, 1)
-        self.assertEqual(current.season_weight, 0.30)
+        self.assertAlmostEqual(current.season_weight, 0.2857142857)
         self.assertGreater(current.teams[0].season_points, current.teams[1].season_points)
 
     def test_record_guardrail_caps_roster_lead(self):
@@ -122,7 +134,7 @@ class EngineTests(unittest.TestCase):
             "dl1": PlayerIdentity("dl1", "dl1", "DL1", "DL"),
             "dl2": PlayerIdentity("dl2", "dl2", "DL2", "DL"),
         }
-        snapshot = basic_snapshot([roster(1, [*ids[:8], "dl1"], 3, 2), roster(2, [*ids[8:], "dl2"], 3, 2)])
+        snapshot = basic_snapshot([roster(1, [*ids[:8], "dl1"], 3, 2), roster(2, [*ids[8:], "dl2"], 3, 2)], week=6)
         snapshot.idp_partial = True
         snapshot.defense_weight = 0.15
         snapshot.roster_positions = ["QB", "RB", "WR", "TE", "DL"]
@@ -135,10 +147,10 @@ class EngineTests(unittest.TestCase):
         result = rank_league(snapshot, books)
 
         by_id = {team.roster_id: team for team in result.teams}
-        self.assertAlmostEqual(result.defense_weight, 0.13)
-        self.assertAlmostEqual(result.market_weight, 0.25)
-        self.assertAlmostEqual(result.lineup_weight, 0.32)
-        self.assertAlmostEqual(result.season_weight, 0.30)
+        self.assertAlmostEqual(result.defense_weight, 0.1214285714)
+        self.assertAlmostEqual(result.market_weight, 0.2428571429)
+        self.assertAlmostEqual(result.lineup_weight, 0.3214285714)
+        self.assertAlmostEqual(result.season_weight, 0.3142857143)
         self.assertAlmostEqual(result.market_weight + result.lineup_weight + result.season_weight + result.defense_weight, 1.0)
         self.assertGreater(by_id[1].defense_points, by_id[2].defense_points)
 
@@ -165,6 +177,53 @@ class EngineTests(unittest.TestCase):
 
         by_id = {team.roster_id: team for team in result.teams}
         self.assertEqual(by_id[1].market_percentile, by_id[2].market_percentile)
+
+    def test_keeper_redraft_market_is_eighty_percent_redraft_twenty_percent_dynasty(self):
+        players = {
+            "a": PlayerIdentity("a", "a", "A", "QB"),
+            "b": PlayerIdentity("b", "b", "B", "QB"),
+        }
+        teams = [roster(1, ["a"]), roster(2, ["b"])]
+        snapshot = LeagueSnapshot("league", "League", 2026, 1, False, 0.5, ["QB"], teams)
+        bundle = MarketBundle(
+            players,
+            [
+                ValueBook("Dynasty", "dynasty", {"a": 100, "b": 1}),
+                ValueBook("Redraft", "redraft_market", {"a": 1, "b": 100}),
+                ValueBook("ROS", "lineup", team_values={1: 10, 2: 10}, scoring_adjusted=True),
+            ],
+            market_dynasty_share=0.20,
+        )
+
+        result = rank_league(snapshot, bundle)
+        by_id = {team.roster_id: team for team in result.teams}
+
+        self.assertEqual(by_id[1].market_percentile, 20.0)
+        self.assertEqual(by_id[2].market_percentile, 80.0)
+        self.assertEqual(result.market_label, "Roster market")
+
+    def test_projection_team_values_drive_ros_component_directly(self):
+        players = {
+            "a": PlayerIdentity("a", "a", "A", "QB"),
+            "b": PlayerIdentity("b", "b", "B", "QB"),
+        }
+        teams = [roster(1, ["a"]), roster(2, ["b"])]
+        snapshot = LeagueSnapshot("league", "League", 2026, 2, False, 0.5, ["QB"], teams)
+        bundle = MarketBundle(
+            players,
+            [
+                ValueBook("Dynasty", "dynasty", {"a": 10, "b": 10}),
+                ValueBook("Sleeper ROS scoring projections", "lineup", team_values={1: 140, 2: 110}, scoring_adjusted=True),
+            ],
+            ros_projection_weeks=[2, 3, 4],
+        )
+
+        result = rank_league(snapshot, bundle)
+        by_id = {team.roster_id: team for team in result.teams}
+
+        self.assertGreater(by_id[1].lineup_percentile, by_id[2].lineup_percentile)
+        self.assertEqual(by_id[1].starter_rating, 140)
+        self.assertEqual(result.ros_projection_weeks, [2, 3, 4])
 
     def test_full_sleeper_roster_finishes_lineup_search_quickly(self):
         players = {}
