@@ -44,7 +44,7 @@ def fetch_ros_team_values(
     for week in ros_projection_weeks(snapshot):
         url = f"{SLEEPER_BASE}/projections/nfl/regular/{snapshot.season}/{week}"
         try:
-            payload = client.get_json(url)
+            payload = _cached_projection_payload(client, url)
         except DataSourceError as exc:
             warnings.append(f"Sleeper Week {week} projections unavailable: {exc}")
             continue
@@ -161,6 +161,19 @@ def projection_fantasy_points(
             except (TypeError, ValueError, AttributeError):
                 continue
     return 0.0
+
+
+def _cached_projection_payload(client: Any, url: str) -> Any:
+    cache = getattr(client, "_other_league_ros_projection_cache", None)
+    if cache is None:
+        cache = {}
+        try:
+            setattr(client, "_other_league_ros_projection_cache", cache)
+        except (AttributeError, TypeError):
+            pass
+    if url not in cache:
+        cache[url] = client.get_json(url)
+    return cache[url]
 
 
 def _normalize_projection_payload(payload: Any) -> dict[str, dict[str, Any]]:
