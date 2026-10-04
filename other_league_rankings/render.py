@@ -32,8 +32,14 @@ def render_result(result: RankingResult, config: LeagueConfig, output_dir: Path)
     lineup = [team.lineup_points for team in teams]
     season = [team.season_points for team in teams]
     defense = [team.defense_points for team in teams]
-    offense_label = "Offense" if result.league.idp_partial else "Current starters"
-    ax.barh(y, market, color=theme.market, height=0.62, label="Dynasty market")
+    has_projection_ros = any("ROS scoring projections" in source for source in result.lineup_sources)
+    offense_label = (
+        "ROS offense" if result.league.idp_partial and has_projection_ros
+        else "Offense" if result.league.idp_partial
+        else "ROS scoring" if has_projection_ros
+        else "Current starters"
+    )
+    ax.barh(y, market, color=theme.market, height=0.62, label=result.market_label)
     ax.barh(y, lineup, left=market, color=theme.lineup, height=0.62, label=offense_label)
     if result.league.idp_partial or result.defense_weight > 0:
         defense_label = f"Defense ({result.defense_weight:.0%} weight)"
@@ -62,14 +68,19 @@ def render_result(result: RankingResult, config: LeagueConfig, output_dir: Path)
     _header(fig, config, result, "POWER RANKINGS", disclosure, theme, Rectangle)
     legend_columns = 4 if (result.league.idp_partial or result.defense_weight > 0) and result.has_season_results else 3 if result.has_season_results else 2
     ax.legend(loc="lower left", bbox_to_anchor=(0, -0.15), ncol=legend_columns, frameon=False, fontsize=8, labelcolor=theme.muted)
-    formula_parts = [f"{result.market_weight:.0%} market", f"{result.lineup_weight:.0%} {offense_label.lower()}"]
+    market_detail = (
+        "market (80% redraft / 20% dynasty)"
+        if result.market_label == "Roster market"
+        else "dynasty market"
+    )
+    formula_parts = [f"{result.market_weight:.0%} {market_detail}", f"{result.lineup_weight:.0%} {offense_label.lower()}"]
     if result.league.idp_partial or result.defense_weight > 0:
         formula_parts.append(f"{result.defense_weight:.0%} defense")
     if result.has_season_results:
         formula_parts.append(f"{result.season_weight:.0%} season (80% record / 20% points)")
         formula = "  ·  ".join(formula_parts)
     elif not (result.league.idp_partial or result.defense_weight > 0):
-        formula = f"{result.market_weight:.0%} market  ·  {result.lineup_weight:.0%} ADP starters  ·  preseason"
+        formula = f"{result.market_weight:.0%} {market_detail}  ·  {result.lineup_weight:.0%} {offense_label.lower()}  ·  preseason"
     else:
         formula = "  ·  ".join(formula_parts) + "  ·  preseason"
     _footer(fig, result, theme, formula)
