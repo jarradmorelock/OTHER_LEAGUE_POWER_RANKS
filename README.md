@@ -38,26 +38,29 @@ Dry-run images are written under `exports/<league-key>/`. The CLI defaults to dr
 
 ## Ranking and source model
 
-The non-SEC leagues use this progressively record-aware model:
+Broken Hearts, Rocky Top Rumble, and 9 to 5 are redraft/keeper leagues, so their market component is **80% current redraft value and 20% dynasty value**. The smaller dynasty share preserves keeper equity without letting long-term dynasty value dominate a one-season power ranking. Best Characters, SEC, and Don't Tell My Wife remain dynasty-market leagues.
 
-| Season stage | Dynasty market | Current starters | Season results |
-| --- | ---: | ---: | ---: |
-| Preseason | 45% | 55% | 0% |
-| Weeks 1–3 | 35% | 45% | 20% |
-| Weeks 4–7 | 30% | 40% | 30% |
-| Week 8 onward | 25% | 35% | 40% |
+For every league, the forward-looking lineup component is now **ROS scoring** rather than a static player-rank lineup. For each remaining fantasy week through Week 17, Sleeper player projections are rescored with that league's own offensive scoring settings, the engine selects the best legal lineup for that week, and those weekly lineup totals are averaged. That naturally incorporates byes, weekly role changes, depth, and league-specific scoring. If projection coverage is unavailable, the existing Dynasty Daddy/FantasyCalc starter-ranking path remains a fallback rather than silently scoring missing projections as zero.
 
-The season-results component is 80% win percentage (ties count as half a win) and 20% points-for percentile. After eight games, a four-or-more-win-gap guardrail caps a lower-record team's lead over the better-record teams at ten score points. Current starters are evaluated in legal offensive lineup slots; a one-QB league's `SUPER_FLEX` slot is treated as QB-only.
+The non-SEC weight schedule moves toward real results every completed NFL week. League-median wins do not make the model age twice as fast.
 
-SEC has a separate four-part schedule. The defense input is Sleeper's raw weekly `pts_ppr`; custom SEC IDP bonuses are intentionally not applied. Preseason keeps the existing 45% market / 55% offense split until weekly projections are available.
+| Completed NFL weeks | Market | ROS scoring | Season results |
+| ---: | ---: | ---: | ---: |
+| Preseason | 45.0% | 55.0% | 0.0% |
+| 1 | 35.0% | 45.0% | 20.0% |
+| 2 | 33.6% | 43.6% | 22.9% |
+| 3 | 32.1% | 42.1% | 25.7% |
+| 4 | 30.7% | 40.7% | 28.6% |
+| 5 | 29.3% | 39.3% | 31.4% |
+| 6 | 27.9% | 37.9% | 34.3% |
+| 7 | 26.4% | 36.4% | 37.1% |
+| 8+ | 25.0% | 35.0% | 40.0% |
 
-| SEC season stage | Market | Offense | Results | Defense |
-| --- | ---: | ---: | ---: | ---: |
-| Weeks 1–3 | 30% | 35% | 20% | 15% |
-| Weeks 4–7 | 25% | 32% | 30% | 13% |
-| Week 8 onward | 20% | 30% | 40% | 10% |
+The season-results component itself is unchanged: 80% win percentage (ties count as half a win) and 20% points-for percentile. The four-or-more-win-gap guardrail begins after eight completed NFL weeks and still caps an extreme lower-record lead at ten score points.
 
-Dynasty Daddy provides the available market feeds (KeepTradeCut, FantasyCalc, DynastyProcess, and DynastySuperflex) and current ROS starter ranks; preseason starter ranks use ADP. If either dynasty-market or current-season input is unavailable, direct FantasyCalc values are used as fallback where available. The engine reports unavailable feeds, mapping gaps, and scoring limitations instead of representing missing sources as a successful zero-value feed. Generic player rankings are **not** scoring-adjusted for TE-premium bonuses. The weekly calculations also do not use weekly fantasy-point projections; they combine current player rankings with actual Sleeper records and points-for.
+SEC keeps its separate four-part offense/IDP structure, but its weights now interpolate every week from Week 1 to Week 8 instead of jumping in broad buckets. Week 1 begins at 30% market / 35% ROS offense / 20% results / 15% defense; Week 8 reaches 20% / 30% / 40% / 10%. The defense input remains Sleeper's raw weekly `pts_ppr`; custom SEC IDP bonuses are intentionally not applied.
+
+Dynasty Daddy still provides the dynasty-market feeds (KeepTradeCut, FantasyCalc, DynastyProcess, and DynastySuperflex). FantasyCalc Direct provides the redraft market feed for the three keeper/redraft leagues. Sleeper provides the weekly ROS projections, which are rescored with each league's scoring settings. The engine reports unavailable feeds, projection gaps, and fallback use explicitly.
 
 ## SEC IDP integration
 
