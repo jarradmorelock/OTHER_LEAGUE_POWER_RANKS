@@ -59,6 +59,8 @@ class MarketBundle:
     players: dict[str, PlayerIdentity]
     books: list[ValueBook]
     warnings: list[str] = field(default_factory=list)
+    market_dynasty_share: float = 1.0
+    ros_projection_weeks: list[int] = field(default_factory=list)
 
     @property
     def dynasty_books(self) -> list[ValueBook]:
