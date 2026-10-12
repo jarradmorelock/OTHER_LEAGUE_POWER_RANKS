@@ -73,12 +73,11 @@ The SEC-only defense schedule activates only with a mapped Sleeper projection so
 The tests use fake Sleeper and ranking-source responses; they do not post to Discord. Coverage includes configuration, normalized scoring and records, source fallbacks, QB-only SUPER_FLEX handling, progressive record weights, guardrails, movement, deterministic playoff examples, both rendered PNGs, SEC disclosure, state isolation, webhook redaction, idempotency, and league failure isolation. A live-data dry run is the final pre-publication smoke check; it produces graphics but never sends a webhook.
 
 
-## Tuesday Editorial Desk delivery
+## Tuesday Editorial Desk research handoff
 
-A second workflow, **Tuesday Other League Power Rankings Email**, rebuilds all six league boards and emails twelve graphics using `PUBLICATIONS_EMAIL_FROM`, `PUBLICATIONS_EMAIL_TO` and `PUBLICATIONS_EMAIL_APP_PASSWORD` (repository Actions secrets). The Tuesday package also commits `handoff/<league-key>.json` and checked PNGs under `handoff/assets/`. Editorial Desk consumes these handoffs and never computes an independent newspaper power poll. There is one canonical whole-league order; SEC divisional ranks and division movement are derived by filtering that order, never by comparing division rank with a whole-league rank. A Tuesday ranking update preserves the Saturday duplicate-post key.
+The data-only **Refresh Editorial Desk Ranking Handoffs** workflow rebuilds power rankings and playoff forecasts early Tuesday and commits canonical JSON and PNG assets to `handoff/`. It sends **no email**. The existing Saturday Discord publishing is unchanged. Editorial Desk retrieves the handoffs into its existing consolidated weekly dossiers and sends the only research delivery email.
 
-Manual dispatch defaults to preview only. To send the email, explicitly enable `send_email`; the scheduled Tuesday job emails automatically. Missing handoffs leave newspaper rankings unavailable rather than substituting a different model.
-
+SEC divisional ranks and rank movement derive from the same overall rankings. No independent newspaper power-ranking model is permitted. The ranking publisher preserves Saturday Discord duplicate-post state while storing a Tuesday baseline for movement.
 
 ### Format-aware market floors
 
