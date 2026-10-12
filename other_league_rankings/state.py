@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import json
+from datetime import datetime, timezone
 import os
 from pathlib import Path
 import re
@@ -46,16 +47,56 @@ class StateStore:
             clean_ranks[roster_id] = rank
         return LeagueState(clean_ranks, post_key)
 
-    def save_success(self, league_key: str, result: RankingResult, post_key: str) -> None:
-        if not post_key:
-            raise ValueError("A post key is required before saving publication state")
+    def _save_snapshot(self, league_key: str, result: RankingResult, post_key: str | None, publication: str) -> None:
         path = self.path_for(league_key)
+        existing = self.load(league_key)
         path.parent.mkdir(parents=True, exist_ok=True)
+        old_generated_at = None
+        if path.exists():
+            old_generated_at = json.loads(path.read_text(encoding="utf-8")).get("generated_at")
+        if old_generated_at:
+            try:
+                prior = datetime.fromisoformat(str(old_generated_at).replace("Z", "+00:00"))
+                current = datetime.fromisoformat(result.generated_at.replace("Z", "+00:00"))
+                if prior.tzinfo is not None and current.tzinfo is not None and current < prior:
+                    raise ValueError("Refusing stale ranking publication: older than saved baseline")
+            except ValueError as exc:
+                if "Refusing stale" in str(exc):
+                    raise
+        ranks = {str(team.roster_id): int(team.rank) for team in result.teams}
         payload = {
-            "last_post_key": post_key,
+            "last_post_key": post_key if post_key is not None else existing.last_post_key,
             "generated_at": result.generated_at,
-            "rank_by_roster_id": {str(team.roster_id): int(team.rank) for team in result.teams},
+            "rank_by_roster_id": ranks,
         }
+        stamp = datetime.fromisoformat(result.generated_at.replace("Z", "+00:00")).astimezone(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+        history_file = path.parent / "history" / league_key / f"{stamp}-{publication}.json"
+        history_file.parent.mkdir(parents=True, exist_ok=True)
+        history = {
+            "schema_version": 1,
+            "publication": publication,
+            "generated_at": result.generated_at,
+            "league_id": str(result.league.league_id) if result.league is not None else None,
+            "season": result.league.season if result.league is not None else None,
+            "ranking_week": result.league.week if result.league is not None else None,
+            "post_key": payload["last_post_key"],
+            "previous_rank_by_roster_id": existing.rank_by_roster_id,
+            "rank_by_roster_id": ranks,
+            "teams": [
+                {"roster_id": int(team.roster_id), "team": team.team_name, "rank": int(team.rank),
+                 "previous_rank": existing.rank_by_roster_id.get(str(team.roster_id)),
+                 "movement": (existing.rank_by_roster_id[str(team.roster_id)] - int(team.rank)
+                              if str(team.roster_id) in existing.rank_by_roster_id else None),
+                 "score": team.score}
+                for team in result.teams
+            ],
+        }
+        encoded = json.dumps(history, sort_keys=True, indent=2) + "\n"
+        if history_file.exists():
+            if history_file.read_text(encoding="utf-8") != encoded:
+                raise ValueError("Ranking history snapshot collision")
+        else:
+            history_file.write_text(encoded, encoding="utf-8")
         temporary_path = None
         try:
             with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, prefix=f".{league_key}.", suffix=".tmp", delete=False) as handle:
@@ -69,26 +110,12 @@ class StateStore:
             if temporary_path is not None and temporary_path.exists():
                 temporary_path.unlink()
 
+    def save_success(self, league_key: str, result: RankingResult, post_key: str) -> None:
+        if not post_key:
+            raise ValueError("A post key is required before saving publication state")
+        self._save_snapshot(league_key, result, post_key, "discord")
+
     def save_rank_history_only(self, league_key: str, result: RankingResult) -> None:
-        """Advance Tuesday movement baseline without suppressing Saturday Discord."""
-        existing = self.load(league_key)
-        path = self.path_for(league_key)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        payload = {
-            "last_post_key": existing.last_post_key,
-            "generated_at": result.generated_at,
-            "rank_by_roster_id": {str(team.roster_id): int(team.rank) for team in result.teams},
-        }
-        temporary_path = None
-        try:
-            with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent,
-                                             prefix=f".{league_key}.", suffix=".tmp", delete=False) as handle:
-                temporary_path = Path(handle.name)
-                json.dump(payload, handle, indent=2, sort_keys=True)
-                handle.write("\n")
-                handle.flush()
-                os.fsync(handle.fileno())
-            os.replace(temporary_path, path)
-        finally:
-            if temporary_path is not None and temporary_path.exists():
-                temporary_path.unlink()
+        """Advance Tuesday movement baseline while preserving the Saturday duplicate-post key."""
+        self._save_snapshot(league_key, result, None, "editorial")
+
