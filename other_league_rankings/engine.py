@@ -95,8 +95,8 @@ def rank_league(
     dynasty_books = [book for book in bundle.dynasty_books if book.player_values or book.pick_values]
     redraft_market_books = [book for book in bundle.redraft_market_books if book.player_values]
     lineup_books = [book for book in bundle.lineup_books if book.player_values or book.team_values]
-    if not dynasty_books or not lineup_books:
-        raise ValueError("At least one dynasty and one lineup source are required")
+    if not lineup_books or (not dynasty_books and not (bundle.market_mode == "redraft" and completed_regular_season_weeks(snapshot) >= 4)):
+        raise ValueError("Required market or lineup source unavailable")
     if not 0.0 <= snapshot.defense_weight < 1.0:
         raise ValueError("Defense weight must be between 0 inclusive and 1 exclusive")
 
@@ -218,10 +218,10 @@ def rank_league(
     usable_dynasty = [book.name for book in dynasty_books if book.name in source_percentiles]
     usable_redraft = [book.name for book in redraft_market_books if book.name in source_percentiles]
     usable_lineup = [book.name for book in lineup_books if book.name in source_percentiles]
-    if not usable_dynasty or not usable_lineup:
+    if not usable_lineup or (not usable_dynasty and not (bundle.market_mode == "redraft" and completed_weeks >= 4)):
         raise ValueError("Available sources did not map enough roster values for every team")
     dynasty_pct = {
-        rid: mean(source_percentiles[name][rid] for name in usable_dynasty)
+        rid: mean(source_percentiles[name][rid] for name in usable_dynasty) if usable_dynasty else 50.0
         for rid in roster_ids
     }
     redraft_pct = {
