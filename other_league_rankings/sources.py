@@ -76,13 +76,6 @@ def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) 
                 )
             )
 
-    for category in ("dynasty", "lineup"):
-        if not any(
-            book.category == category and (book.player_values or book.team_values)
-            for book in books
-        ):
-            raise DataSourceError(f"No usable {category} value source was available for {config.key}")
-
     _augment_rostered_identities(client, snapshot, identities)
 
     ros_values, ros_weeks, ros_warnings = fetch_ros_team_values(
@@ -104,6 +97,14 @@ def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) 
             warnings.append(
                 f"TE premium ({config.expected_bonus_rec_te:g} bonus reception points) is not incorporated by generic player rankings."
             )
+
+    # A pure redraft league past Week 4 is independent of market feeds.
+    # Resolve ROS with Sleeper identities even when KTC/FantasyCalc fails.
+    required_market = config.market_mode != "redraft" or snapshot.week < 5
+    if required_market and not any(book.category == "dynasty" and (book.player_values or book.pick_values) for book in books):
+        raise DataSourceError(f"No usable market values for {config.key}")
+    if not any(book.category == "lineup" and (book.player_values or book.team_values) for book in books):
+        raise DataSourceError(f"No usable ROS/lineup projections for {config.key}")
 
     rostered_offense = {
         player_id
