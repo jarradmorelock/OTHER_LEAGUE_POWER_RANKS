@@ -134,6 +134,7 @@ def fetch_rankings(client: Any, config: LeagueConfig, snapshot: LeagueSnapshot) 
         warnings=warnings,
         market_dynasty_share=config.keeper_dynasty_share if config.market_mode == "keeper_redraft" else 1.0,
         ros_projection_weeks=ros_weeks,
+        market_mode=config.market_mode,
     )
 
 
