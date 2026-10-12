@@ -30,6 +30,23 @@ class EngineTests(unittest.TestCase):
             self.assertAlmostEqual(sum(ranking_weights(8, mode)), 1.0)
         self.assertAlmostEqual(ranking_weights(8, "redraft")[2], 0.75)
 
+
+    def test_pure_redraft_after_week_four_needs_no_dynasty_market_book(self):
+        players = {
+            "a": PlayerIdentity("a", "a", "A", "QB"),
+            "b": PlayerIdentity("b", "b", "B", "QB"),
+        }
+        teams = [roster(1, ["a"], 4, 0, 400), roster(2, ["b"], 1, 3, 300)]
+        league = LeagueSnapshot("league", "League", 2026, 5, False, 0.5, ["QB"], teams)
+        values = MarketBundle(
+            players, [ValueBook("Sleeper ROS", "lineup", team_values={1: 21.0, 2: 20.0})],
+            market_mode="redraft",
+        )
+        result = rank_league(league, values)
+        self.assertEqual(result.market_weight, 0.0)
+        self.assertEqual(result.dynasty_sources, [])
+        self.assertEqual(result.teams[0].roster_id, 1)
+
     def test_weight_schedule(self):
         self.assertEqual(ranking_weights(0), (0.45, 0.55, 0.0))
         self.assertAlmostEqual(ranking_weights(1)[1], 0.45)
