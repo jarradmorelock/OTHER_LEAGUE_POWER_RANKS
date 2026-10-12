@@ -315,7 +315,7 @@ def rank_league(
         warnings=[*snapshot.warnings, *bundle.warnings, *coverage_warnings],
         defense_weight=defense_weight,
         defense_sources=defense_sources,
-        market_label=("Roster market" if usable_redraft else "Dynasty market"),
+        market_label=("Roster market" if bundle.market_mode in {"redraft", "keeper_redraft"} or usable_redraft else "Dynasty market"),
         ros_projection_weeks=list(bundle.ros_projection_weeks),
     )
 
