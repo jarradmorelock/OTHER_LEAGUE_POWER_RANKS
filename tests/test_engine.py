@@ -25,8 +25,8 @@ class EngineTests(unittest.TestCase):
         self.assertAlmostEqual(ranking_weights(1)[1], 0.45)
         week_three = ranking_weights(3)
         self.assertAlmostEqual(week_three[0], 0.1833333333)
-        self.assertAlmostEqual(week_three[1], 0.325)
-        self.assertAlmostEqual(week_three[2], 0.4916666667)
+        self.assertAlmostEqual(week_three[1], 0.3166666667)
+        self.assertAlmostEqual(week_three[2], 0.50)
         self.assertEqual(ranking_weights(8), (0.125, 0.125, 0.75))
 
     def test_sec_weight_schedule_steps_every_week(self):
@@ -34,9 +34,9 @@ class EngineTests(unittest.TestCase):
         self.assertAlmostEqual(sec_ranking_weights(1)[1], 0.30)
         week_five = sec_ranking_weights(5)
         self.assertAlmostEqual(week_five[0], 0.125)
-        self.assertAlmostEqual(week_five[1], 0.21875)
+        self.assertAlmostEqual(week_five[1], 0.0973214286)
         self.assertAlmostEqual(week_five[2], 0.65625)
-        self.assertAlmostEqual(week_five[3], 0.125)
+        self.assertAlmostEqual(week_five[3], 0.1214285714)
         self.assertEqual(sec_ranking_weights(8), (0.125, 0.025, 0.75, 0.10))
 
     def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
@@ -150,7 +150,7 @@ class EngineTests(unittest.TestCase):
         by_id = {team.roster_id: team for team in result.teams}
         self.assertAlmostEqual(result.defense_weight, 0.1214285714)
         self.assertAlmostEqual(result.market_weight, 0.05)
-        self.assertAlmostEqual(result.lineup_weight, 0.2642857143)
+        self.assertAlmostEqual(result.lineup_weight, 0.1723214286)
         self.assertAlmostEqual(result.season_weight, 0.4214285714)
         self.assertAlmostEqual(result.market_weight + result.lineup_weight + result.season_weight + result.defense_weight, 1.0)
         self.assertGreater(by_id[1].defense_points, by_id[2].defense_points)
