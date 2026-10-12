@@ -24,20 +24,20 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(ranking_weights(0), (0.45, 0.55, 0.0))
         self.assertEqual(ranking_weights(1), (0.30, 0.45, 0.25))
         week_three = ranking_weights(3)
-        self.assertAlmostEqual(week_three[0], 0.2714285714)
-        self.assertAlmostEqual(week_three[1], 0.3928571429)
-        self.assertAlmostEqual(week_three[2], 0.3357142857)
-        self.assertEqual(ranking_weights(8), (0.20, 0.25, 0.55))
+        self.assertAlmostEqual(week_three[0], 0.1833333333)
+        self.assertAlmostEqual(week_three[1], 0.325)
+        self.assertAlmostEqual(week_three[2], 0.4916666667)
+        self.assertEqual(ranking_weights(8), (0.125, 0.125, 0.75))
 
     def test_sec_weight_schedule_steps_every_week(self):
         self.assertEqual(sec_ranking_weights(0), (0.45, 0.55, 0.0, 0.0))
-        self.assertEqual(sec_ranking_weights(1), (0.25, 0.35, 0.25, 0.15))
+        self.assertEqual(sec_ranking_weights(1), (0.30, 0.30, 0.25, 0.15))
         week_five = sec_ranking_weights(5)
-        self.assertAlmostEqual(week_five[0], 0.1928571429)
-        self.assertAlmostEqual(week_five[1], 0.2642857143)
-        self.assertAlmostEqual(week_five[2], 0.4214285714)
-        self.assertAlmostEqual(week_five[3], 0.1214285714)
-        self.assertEqual(sec_ranking_weights(8), (0.15, 0.20, 0.55, 0.10))
+        self.assertAlmostEqual(week_five[0], 0.125)
+        self.assertAlmostEqual(week_five[1], 0.21875)
+        self.assertAlmostEqual(week_five[2], 0.65625)
+        self.assertAlmostEqual(week_five[3], 0.125)
+        self.assertEqual(sec_ranking_weights(8), (0.125, 0.025, 0.75, 0.10))
 
     def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
         teams = [roster(1, ["1"], 4, 2, 300), roster(2, ["2"], 2, 4, 250)]
@@ -54,7 +54,7 @@ class EngineTests(unittest.TestCase):
         current = rank_league(basic_snapshot(teams, week=5), bundle(ids, dynasty, lineup))
 
         self.assertEqual(current.teams[0].roster_id, 1)
-        self.assertAlmostEqual(current.season_weight, 0.3785714286)
+        self.assertAlmostEqual(current.season_weight, 0.625)
         self.assertGreater(current.teams[0].season_points, current.teams[1].season_points)
 
     def test_record_guardrail_caps_roster_lead(self):
