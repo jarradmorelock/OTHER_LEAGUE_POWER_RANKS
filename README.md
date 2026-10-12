@@ -56,7 +56,7 @@ The non-SEC weight schedule moves toward real results every completed NFL week. 
 | 7 | 21.4% | 27.9% | 50.7% |
 | 8+ | 20.0% | 25.0% | 55.0% |
 
-The season-results component itself is unchanged: 80% win percentage (ties count as half a win) and 20% points-for percentile. An undefeated team with four or more decisions always outranks a three-or-more-loss team; its transparent record adjustment is included in the displayed season-results bar. The four-or-more-win-gap guardrail begins after eight completed NFL weeks and still caps an extreme lower-record lead at ten score points.
+The season-results component is 75% win percentage (ties count as half a win) and 25% points-for percentile. An undefeated team with four or more decisions always outranks a three-or-more-loss team; its transparent record adjustment is included in the displayed season-results bar. The four-or-more-win-gap guardrail begins after eight completed NFL weeks and still caps an extreme lower-record lead at ten score points.
 
 SEC keeps its separate four-part offense/IDP structure, but its weights now interpolate every week from Week 1 to Week 8 instead of jumping in broad buckets. Week 1 begins at 25% market / 35% ROS offense / 25% results / 15% defense; Week 8 reaches 15% / 20% / 55% / 10%. The defense input remains Sleeper's raw weekly `pts_ppr`; custom SEC IDP bonuses are intentionally not applied.
 
@@ -78,3 +78,8 @@ The tests use fake Sleeper and ranking-source responses; they do not post to Dis
 A second workflow, **Tuesday Other League Power Rankings Email**, rebuilds all six league boards and emails twelve graphics using `PUBLICATIONS_EMAIL_FROM`, `PUBLICATIONS_EMAIL_TO` and `PUBLICATIONS_EMAIL_APP_PASSWORD` (repository Actions secrets). The Tuesday package also commits `handoff/<league-key>.json` and checked PNGs under `handoff/assets/`. Editorial Desk consumes these handoffs and never computes an independent newspaper power poll. There is one canonical whole-league order; SEC divisional ranks and division movement are derived by filtering that order, never by comparing division rank with a whole-league rank. A Tuesday ranking update preserves the Saturday duplicate-post key.
 
 Manual dispatch defaults to preview only. To send the email, explicitly enable `send_email`; the scheduled Tuesday job emails automatically. Missing handoffs leave newspaper rankings unavailable rather than substituting a different model.
+
+
+### Format-aware market floors
+
+Market rapidly declines to a stable floor after completed NFL Week 4: 12.5% in dynasty (SEC, Best Characters, Don't Tell My Wife), 5% in keeper (Rocky Top), 0% in pure redraft (Ballad, 9-5), and 5% if the league type is unknown. The remaining weight is divided between ROS projections and actual results. By completed Week 8, actual performance is weighted 75%, using a 75% W-L / 25% points-for internal blend. SEC defensive scoring retains a separate slice of the forward-looking ROS component.
