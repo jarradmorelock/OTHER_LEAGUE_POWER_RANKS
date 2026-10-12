@@ -14,6 +14,8 @@ POINTS_SHARE_OF_SEASON = 0.20
 GUARDRAIL_MIN_GAMES = 8
 GUARDRAIL_WIN_GAP = 4.0
 GUARDRAIL_MAX_SCORE_LEAD = 10.0
+UNDEFEATED_RECORD_MIN_GAMES = 4
+UNDEFEATED_RANKING_MARGIN = 0.01
 OFFENSE = {"QB", "RB", "WR", "TE"}
 ELIGIBLE = {
     "QB": {"QB"},
@@ -276,6 +278,7 @@ def rank_league(
     guardrail_active = completed_weeks >= GUARDRAIL_MIN_GAMES
     if guardrail_active:
         _apply_record_guardrail(scored)
+    _enforce_undefeated_priority(scored)
     scored.sort(key=lambda item: (item.score, item.market, item.lineup, item.team.points_for), reverse=True)
     ranks = {item.team.roster_id: rank for rank, item in enumerate(scored, start=1)}
     source_ranks = {name: ordinal_ranks(totals) for name, totals in source_totals.items()}
@@ -344,6 +347,22 @@ def _apply_record_guardrail(scored: list[_TeamScore]) -> None:
         item.defense_points *= scale
         item.score = item.market_points + item.lineup_points + item.defense_points + item.season_points
         item.record_guardrail_applied = True
+
+
+def _enforce_undefeated_priority(scored: list[_TeamScore]) -> None:
+    """Undefeated teams with 4+ decisions always outrank 3+-loss teams."""
+    undefeated = [item for item in scored if item.team.games >= UNDEFEATED_RECORD_MIN_GAMES
+                  and item.team.losses == 0 and item.team.ties == 0]
+    lower = [item.score for item in scored if item.team.losses >= 3]
+    if not undefeated or not lower:
+        return
+    floor = max(lower) + UNDEFEATED_RANKING_MARGIN
+    for item in undefeated:
+        if item.score < floor:
+            adjustment = floor - item.score
+            item.season_points += adjustment
+            item.score = floor
+            item.record_guardrail_applied = True
 
 
 def percentile_scores(values: dict[int, float]) -> dict[int, float]:
