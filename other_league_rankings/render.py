@@ -77,7 +77,7 @@ def render_result(result: RankingResult, config: LeagueConfig, output_dir: Path)
     if result.league.idp_partial or result.defense_weight > 0:
         formula_parts.append(f"{result.defense_weight:.0%} defense")
     if result.has_season_results:
-        formula_parts.append(f"{result.season_weight:.0%} season (80% record / 20% points)")
+        formula_parts.append(f"{result.season_weight:.0%} season (75% record / 25% points)")
         formula = "  ·  ".join(formula_parts)
     elif not (result.league.idp_partial or result.defense_weight > 0):
         formula = f"{result.market_weight:.0%} {market_detail}  ·  {result.lineup_weight:.0%} {offense_label.lower()}  ·  preseason"

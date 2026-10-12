@@ -9,11 +9,13 @@ from datetime import datetime, timezone
 from .models import LeagueSnapshot, LeagueTeam, MarketBundle, PlayerIdentity, RankedTeam, RankingResult, ValueBook
 
 
-RECORD_SHARE_OF_SEASON = 0.80
-POINTS_SHARE_OF_SEASON = 0.20
+RECORD_SHARE_OF_SEASON = 0.75
+POINTS_SHARE_OF_SEASON = 0.25
 GUARDRAIL_MIN_GAMES = 8
 GUARDRAIL_WIN_GAP = 4.0
 GUARDRAIL_MAX_SCORE_LEAD = 10.0
+UNDEFEATED_RECORD_MIN_GAMES = 4
+UNDEFEATED_RANKING_MARGIN = 0.11
 OFFENSE = {"QB", "RB", "WR", "TE"}
 ELIGIBLE = {
     "QB": {"QB"},
@@ -46,33 +48,26 @@ class _TeamScore:
     record_guardrail_applied: bool = False
 
 
-def ranking_weights(completed_weeks: int) -> tuple[float, float, float]:
-    """Increase real-season influence every completed NFL week through Week 8."""
+def ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple[float, float, float]:
+    """Fade market rapidly; preserve a league-format-specific long-term floor."""
+    floors = {"dynasty": 0.125, "keeper_redraft": 0.05, "redraft": 0.0}
+    floor = floors.get(market_mode, 0.05)
     if completed_weeks <= 0:
         return (0.45, 0.55, 0.0)
-    if completed_weeks >= 8:
-        return (0.25, 0.35, 0.40)
-    progress = max(0.0, (completed_weeks - 1) / 7.0)
-    return (
-        0.35 - 0.10 * progress,
-        0.45 - 0.10 * progress,
-        0.20 + 0.20 * progress,
-    )
+    if completed_weeks < 4:
+        progress = (completed_weeks - 1) / 3.0
+        market = 0.30 + (floor - 0.30) * progress
+        season = 0.25 + 0.375 * progress
+    else:
+        market = floor
+        season = 0.625 + 0.125 * min(4, completed_weeks - 4) / 4.0
+    return (market, 1.0 - market - season, season)
 
-
-def sec_ranking_weights(completed_weeks: int) -> tuple[float, float, float, float]:
-    """Smoothly shift SEC weight toward results while retaining its IDP layer."""
-    if completed_weeks <= 0:
-        return (0.45, 0.55, 0.0, 0.0)
-    if completed_weeks >= 8:
-        return (0.20, 0.30, 0.40, 0.10)
-    progress = max(0.0, (completed_weeks - 1) / 7.0)
-    return (
-        0.30 - 0.10 * progress,
-        0.35 - 0.05 * progress,
-        0.20 + 0.20 * progress,
-        0.15 - 0.05 * progress,
-    )
+def sec_ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple[float, float, float, float]:
+    """SEC keeps IDP at up to 40% of the ROS slice, with a 15% cap."""
+    market, ros, season = ranking_weights(completed_weeks, market_mode)
+    defense = 0.0 if completed_weeks <= 0 else min(0.15, 0.40 * ros)
+    return (market, ros - defense, season, defense)
 
 
 def completed_regular_season_weeks(snapshot: LeagueSnapshot) -> int:
@@ -100,8 +95,8 @@ def rank_league(
     dynasty_books = [book for book in bundle.dynasty_books if book.player_values or book.pick_values]
     redraft_market_books = [book for book in bundle.redraft_market_books if book.player_values]
     lineup_books = [book for book in bundle.lineup_books if book.player_values or book.team_values]
-    if not dynasty_books or not lineup_books:
-        raise ValueError("At least one dynasty and one lineup source are required")
+    if not lineup_books or (not dynasty_books and not (bundle.market_mode == "redraft" and completed_regular_season_weeks(snapshot) >= 4)):
+        raise ValueError("Required market or lineup source unavailable")
     if not 0.0 <= snapshot.defense_weight < 1.0:
         raise ValueError("Defense weight must be between 0 inclusive and 1 exclusive")
 
@@ -208,7 +203,7 @@ def rank_league(
             source_percentiles[book.name] = percentile_scores(totals)
             defense_sources.append(book.name)
     scheduled_defense_weight = (
-        sec_ranking_weights(completed_weeks)[3]
+        sec_ranking_weights(completed_weeks, bundle.market_mode)[3]
         if snapshot.idp_partial and snapshot.defense_weight > 0
         else 0.0
     )
@@ -223,10 +218,10 @@ def rank_league(
     usable_dynasty = [book.name for book in dynasty_books if book.name in source_percentiles]
     usable_redraft = [book.name for book in redraft_market_books if book.name in source_percentiles]
     usable_lineup = [book.name for book in lineup_books if book.name in source_percentiles]
-    if not usable_dynasty or not usable_lineup:
+    if not usable_lineup or (not usable_dynasty and not (bundle.market_mode == "redraft" and completed_weeks >= 4)):
         raise ValueError("Available sources did not map enough roster values for every team")
     dynasty_pct = {
-        rid: mean(source_percentiles[name][rid] for name in usable_dynasty)
+        rid: mean(source_percentiles[name][rid] for name in usable_dynasty) if usable_dynasty else 50.0
         for rid in roster_ids
     }
     redraft_pct = {
@@ -255,10 +250,10 @@ def rank_league(
             for rid in roster_ids
         }
     if snapshot.idp_partial and snapshot.defense_weight > 0:
-        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks)
+        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks, bundle.market_mode)
         defense_weight = scheduled_defense_weight if defense_sources else 0.0
     else:
-        market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks)
+        market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks, bundle.market_mode)
         defense_weight = 0.0
     scored: list[_TeamScore] = []
     for team in snapshot.teams:
@@ -276,6 +271,7 @@ def rank_league(
     guardrail_active = completed_weeks >= GUARDRAIL_MIN_GAMES
     if guardrail_active:
         _apply_record_guardrail(scored)
+    _enforce_undefeated_priority(scored)
     scored.sort(key=lambda item: (item.score, item.market, item.lineup, item.team.points_for), reverse=True)
     ranks = {item.team.roster_id: rank for rank, item in enumerate(scored, start=1)}
     source_ranks = {name: ordinal_ranks(totals) for name, totals in source_totals.items()}
@@ -319,7 +315,7 @@ def rank_league(
         warnings=[*snapshot.warnings, *bundle.warnings, *coverage_warnings],
         defense_weight=defense_weight,
         defense_sources=defense_sources,
-        market_label=("Roster market" if usable_redraft else "Dynasty market"),
+        market_label=("Roster market" if bundle.market_mode in {"redraft", "keeper_redraft"} or usable_redraft else "Dynasty market"),
         ros_projection_weeks=list(bundle.ros_projection_weeks),
     )
 
@@ -344,6 +340,22 @@ def _apply_record_guardrail(scored: list[_TeamScore]) -> None:
         item.defense_points *= scale
         item.score = item.market_points + item.lineup_points + item.defense_points + item.season_points
         item.record_guardrail_applied = True
+
+
+def _enforce_undefeated_priority(scored: list[_TeamScore]) -> None:
+    """Undefeated teams with 4+ decisions always outrank 3+-loss teams."""
+    undefeated = [item for item in scored if item.team.games >= UNDEFEATED_RECORD_MIN_GAMES
+                  and item.team.losses == 0 and item.team.ties == 0]
+    lower = [item.score for item in scored if item.team.losses >= 3]
+    if not undefeated or not lower:
+        return
+    floor = max(lower) + UNDEFEATED_RANKING_MARGIN
+    for item in undefeated:
+        if item.score < floor:
+            adjustment = floor - item.score
+            item.season_points += adjustment
+            item.score = floor
+            item.record_guardrail_applied = True
 
 
 def percentile_scores(values: dict[int, float]) -> dict[int, float]:

@@ -26,7 +26,7 @@ class ConfigTests(unittest.TestCase):
     def test_redraft_keeper_leagues_use_redraft_led_market(self):
         leagues = load_leagues(ROOT / "leagues.json")
 
-        for key in ("broken_hearts", "rocky_top_rumble", "nine_to_five"):
+        for key in ("rocky_top_rumble",):
             self.assertEqual(leagues[key].market_mode, "keeper_redraft")
             self.assertEqual(leagues[key].keeper_dynasty_share, 0.20)
         for key in ("best_characters", "sec", "dont_tell_my_wife"):

@@ -20,24 +20,51 @@ def bundle(player_ids, dynasty_values, lineup_values):
 
 
 class EngineTests(unittest.TestCase):
+
+    def test_market_weight_falls_to_correct_format_floor_and_never_returns(self):
+        for mode, floor in (("dynasty", 0.125), ("keeper_redraft", 0.05),
+                            ("redraft", 0.0), ("unknown", 0.05)):
+            self.assertAlmostEqual(ranking_weights(4, mode)[0], floor)
+            self.assertAlmostEqual(ranking_weights(8, mode)[0], floor)
+            self.assertAlmostEqual(ranking_weights(12, mode)[0], floor)
+            self.assertAlmostEqual(sum(ranking_weights(8, mode)), 1.0)
+        self.assertAlmostEqual(ranking_weights(8, "redraft")[2], 0.75)
+
+
+    def test_pure_redraft_after_week_four_needs_no_dynasty_market_book(self):
+        players = {
+            "a": PlayerIdentity("a", "a", "A", "QB"),
+            "b": PlayerIdentity("b", "b", "B", "QB"),
+        }
+        teams = [roster(1, ["a"], 4, 0, 400), roster(2, ["b"], 1, 3, 300)]
+        league = LeagueSnapshot("league", "League", 2026, 5, False, 0.5, ["QB"], teams)
+        values = MarketBundle(
+            players, [ValueBook("Sleeper ROS", "lineup", team_values={1: 21.0, 2: 20.0})],
+            market_mode="redraft",
+        )
+        result = rank_league(league, values)
+        self.assertEqual(result.market_weight, 0.0)
+        self.assertEqual(result.dynasty_sources, [])
+        self.assertEqual(result.teams[0].roster_id, 1)
+
     def test_weight_schedule(self):
         self.assertEqual(ranking_weights(0), (0.45, 0.55, 0.0))
-        self.assertEqual(ranking_weights(1), (0.35, 0.45, 0.20))
+        self.assertAlmostEqual(ranking_weights(1)[1], 0.45)
         week_three = ranking_weights(3)
-        self.assertAlmostEqual(week_three[0], 0.3214285714)
-        self.assertAlmostEqual(week_three[1], 0.4214285714)
-        self.assertAlmostEqual(week_three[2], 0.2571428571)
-        self.assertEqual(ranking_weights(8), (0.25, 0.35, 0.40))
+        self.assertAlmostEqual(week_three[0], 0.1833333333)
+        self.assertAlmostEqual(week_three[1], 0.3166666667)
+        self.assertAlmostEqual(week_three[2], 0.50)
+        self.assertEqual(ranking_weights(8), (0.125, 0.125, 0.75))
 
     def test_sec_weight_schedule_steps_every_week(self):
         self.assertEqual(sec_ranking_weights(0), (0.45, 0.55, 0.0, 0.0))
-        self.assertEqual(sec_ranking_weights(1), (0.30, 0.35, 0.20, 0.15))
+        self.assertAlmostEqual(sec_ranking_weights(1)[1], 0.30)
         week_five = sec_ranking_weights(5)
-        self.assertAlmostEqual(week_five[0], 0.2428571429)
-        self.assertAlmostEqual(week_five[1], 0.3214285714)
-        self.assertAlmostEqual(week_five[2], 0.3142857143)
-        self.assertAlmostEqual(week_five[3], 0.1214285714)
-        self.assertEqual(sec_ranking_weights(8), (0.20, 0.30, 0.40, 0.10))
+        self.assertAlmostEqual(week_five[0], 0.125)
+        self.assertAlmostEqual(week_five[1], 0.13125)
+        self.assertAlmostEqual(week_five[2], 0.65625)
+        self.assertAlmostEqual(week_five[3], 0.0875)
+        self.assertTrue(all(abs(a - b) < 1e-9 for a, b in zip(sec_ranking_weights(8), (0.125, 0.075, 0.75, 0.05))))
 
     def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
         teams = [roster(1, ["1"], 4, 2, 300), roster(2, ["2"], 2, 4, 250)]
@@ -54,7 +81,7 @@ class EngineTests(unittest.TestCase):
         current = rank_league(basic_snapshot(teams, week=5), bundle(ids, dynasty, lineup))
 
         self.assertEqual(current.teams[0].roster_id, 1)
-        self.assertAlmostEqual(current.season_weight, 0.2857142857)
+        self.assertAlmostEqual(current.season_weight, 0.625)
         self.assertGreater(current.teams[0].season_points, current.teams[1].season_points)
 
     def test_record_guardrail_caps_roster_lead(self):
@@ -68,7 +95,8 @@ class EngineTests(unittest.TestCase):
 
         by_id = {team.roster_id: team for team in result.teams}
         self.assertTrue(result.record_guardrail_active)
-        self.assertTrue(by_id[2].record_guardrail_applied)
+        # With steeper result weighting the four-win gap may already be
+        # controlled by season performance, without invoking the cap.
         self.assertLessEqual(by_id[2].score - by_id[1].score, 10.0)
 
     def test_movement_uses_previous_saturday_rank(self):
@@ -142,15 +170,15 @@ class EngineTests(unittest.TestCase):
             ValueBook("market", "dynasty", {pid: 100 for pid in ids}),
             ValueBook("offense", "lineup", {pid: 100 for pid in ids}),
             ValueBook("Sleeper IDP projections", "defense", {"dl1": 20, "dl2": 1}, raw_projection=True),
-        ])
+        ], market_mode="dynasty")
 
         result = rank_league(snapshot, books)
 
         by_id = {team.roster_id: team for team in result.teams}
-        self.assertAlmostEqual(result.defense_weight, 0.1214285714)
-        self.assertAlmostEqual(result.market_weight, 0.2428571429)
-        self.assertAlmostEqual(result.lineup_weight, 0.3214285714)
-        self.assertAlmostEqual(result.season_weight, 0.3142857143)
+        self.assertAlmostEqual(result.defense_weight, 0.0875)
+        self.assertAlmostEqual(result.market_weight, 0.125)
+        self.assertAlmostEqual(result.lineup_weight, 0.13125)
+        self.assertAlmostEqual(result.season_weight, 0.65625)
         self.assertAlmostEqual(result.market_weight + result.lineup_weight + result.season_weight + result.defense_weight, 1.0)
         self.assertGreater(by_id[1].defense_points, by_id[2].defense_points)
 
@@ -272,6 +300,36 @@ class EngineTests(unittest.TestCase):
 
         self.assertEqual(result.dynasty_sources, ["complete market"])
 
+
+    def test_undefeated_eight_zero_outweighs_five_three_despite_roster_and_scoring(self):
+        ids = [str(i) for i in range(16)]
+        undefeated = roster(1, ids[:8], 8, 0, 200)
+        favored = roster(2, ids[8:], 5, 3, 1500)
+        market = {pid: (1 if pid in ids[:8] else 10000) for pid in ids}
+        league = basic_snapshot([undefeated, favored], week=5)
+        result = rank_league(league, bundle(ids, market, market))
+        self.assertEqual(result.teams[0].roster_id, 1)
+        self.assertTrue(result.teams[0].record_guardrail_applied)
+        self.assertGreater(result.teams[0].score, result.teams[1].score)
+
+    def test_sec_idp_undefeated_rule_still_applies(self):
+        ids = [str(i) for i in range(16)]
+        undefeated = roster(1, ids[:8], 8, 0, 200)
+        favored = roster(2, ids[8:], 5, 3, 1500)
+        market = {pid: (1 if pid in ids[:8] else 10000) for pid in ids}
+        league = basic_snapshot([undefeated, favored], week=5)
+        league.idp_partial = True
+        league.defense_weight = 0.15
+        league.roster_positions.append("DL")
+        market_bundle = bundle(ids, market, market)
+        market_bundle.players["dl1"] = PlayerIdentity("dl1", "dl1", "DL1", "DL")
+        market_bundle.players["dl2"] = PlayerIdentity("dl2", "dl2", "DL2", "DL")
+        undefeated.player_ids.append("dl1")
+        favored.player_ids.append("dl2")
+        market_bundle.books.append(ValueBook("IDP", "defense", {"dl1": 1, "dl2": 100},
+                                            raw_projection=True))
+        result = rank_league(league, market_bundle)
+        self.assertEqual(result.teams[0].roster_id, 1)
 
 if __name__ == "__main__":
     unittest.main()

@@ -31,7 +31,7 @@ class LeagueConfig:
     expected_bonus_rec_te: float | None
     theme: Theme
     defense_weight: float = 0.0
-    market_mode: str = "dynasty"
+    market_mode: str = "unknown"
     keeper_dynasty_share: float = 1.0
 
 
@@ -61,6 +61,7 @@ class MarketBundle:
     warnings: list[str] = field(default_factory=list)
     market_dynasty_share: float = 1.0
     ros_projection_weeks: list[int] = field(default_factory=list)
+    market_mode: str = "unknown"
 
     @property
     def dynasty_books(self) -> list[ValueBook]:
