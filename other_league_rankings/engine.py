@@ -253,7 +253,7 @@ def rank_league(
         market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks, bundle.market_mode)
         defense_weight = scheduled_defense_weight if defense_sources else 0.0
     else:
-        market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks)
+        market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks, bundle.market_mode)
         defense_weight = 0.0
     scored: list[_TeamScore] = []
     for team in snapshot.teams:
