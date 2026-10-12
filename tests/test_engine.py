@@ -44,10 +44,10 @@ class EngineTests(unittest.TestCase):
         self.assertAlmostEqual(sec_ranking_weights(1)[1], 0.30)
         week_five = sec_ranking_weights(5)
         self.assertAlmostEqual(week_five[0], 0.125)
-        self.assertAlmostEqual(week_five[1], 0.0973214286)
+        self.assertAlmostEqual(week_five[1], 0.13125)
         self.assertAlmostEqual(week_five[2], 0.65625)
-        self.assertAlmostEqual(week_five[3], 0.1214285714)
-        self.assertTrue(all(abs(a - b) < 1e-9 for a, b in zip(sec_ranking_weights(8), (0.125, 0.025, 0.75, 0.10))))
+        self.assertAlmostEqual(week_five[3], 0.0875)
+        self.assertTrue(all(abs(a - b) < 1e-9 for a, b in zip(sec_ranking_weights(8), (0.125, 0.075, 0.75, 0.05))))
 
     def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
         teams = [roster(1, ["1"], 4, 2, 300), roster(2, ["2"], 2, 4, 250)]
@@ -153,14 +153,14 @@ class EngineTests(unittest.TestCase):
             ValueBook("market", "dynasty", {pid: 100 for pid in ids}),
             ValueBook("offense", "lineup", {pid: 100 for pid in ids}),
             ValueBook("Sleeper IDP projections", "defense", {"dl1": 20, "dl2": 1}, raw_projection=True),
-        ])
+        ], market_mode="dynasty")
 
         result = rank_league(snapshot, books)
 
         by_id = {team.roster_id: team for team in result.teams}
-        self.assertAlmostEqual(result.defense_weight, 0.1214285714)
-        self.assertAlmostEqual(result.market_weight, 0.05)
-        self.assertAlmostEqual(result.lineup_weight, 0.1723214286)
+        self.assertAlmostEqual(result.defense_weight, 0.0875)
+        self.assertAlmostEqual(result.market_weight, 0.125)
+        self.assertAlmostEqual(result.lineup_weight, 0.13125)
         self.assertAlmostEqual(result.season_weight, 0.65625)
         self.assertAlmostEqual(result.market_weight + result.lineup_weight + result.season_weight + result.defense_weight, 1.0)
         self.assertGreater(by_id[1].defense_points, by_id[2].defense_points)
