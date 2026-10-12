@@ -273,5 +273,27 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(result.dynasty_sources, ["complete market"])
 
 
+    def test_undefeated_eight_zero_outweighs_five_three_despite_roster_and_scoring(self):
+        ids = [str(i) for i in range(16)]
+        undefeated = roster(1, ids[:8], 8, 0, 200)
+        favored = roster(2, ids[8:], 5, 3, 1500)
+        market = {pid: (1 if pid in ids[:8] else 10000) for pid in ids}
+        league = basic_snapshot([undefeated, favored], week=5)
+        result = rank_league(league, bundle(ids, market, market))
+        self.assertEqual(result.teams[0].roster_id, 1)
+        self.assertTrue(result.teams[0].record_guardrail_applied)
+        self.assertGreater(result.teams[0].score, result.teams[1].score)
+
+    def test_sec_idp_undefeated_rule_still_applies(self):
+        ids = [str(i) for i in range(16)]
+        undefeated = roster(1, ids[:8], 8, 0, 200)
+        favored = roster(2, ids[8:], 5, 3, 1500)
+        market = {pid: (1 if pid in ids[:8] else 10000) for pid in ids}
+        league = basic_snapshot([undefeated, favored], week=5)
+        league.idp_partial = True
+        league.defense_weight = 0.15
+        result = rank_league(league, bundle(ids, market, market))
+        self.assertEqual(result.teams[0].roster_id, 1)
+
 if __name__ == "__main__":
     unittest.main()
