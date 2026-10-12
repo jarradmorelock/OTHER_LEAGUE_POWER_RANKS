@@ -20,6 +20,16 @@ def bundle(player_ids, dynasty_values, lineup_values):
 
 
 class EngineTests(unittest.TestCase):
+
+    def test_market_weight_falls_to_correct_format_floor_and_never_returns(self):
+        for mode, floor in (("dynasty", 0.125), ("keeper_redraft", 0.05),
+                            ("redraft", 0.0), ("unknown", 0.05)):
+            self.assertAlmostEqual(ranking_weights(4, mode)[0], floor)
+            self.assertAlmostEqual(ranking_weights(8, mode)[0], floor)
+            self.assertAlmostEqual(ranking_weights(12, mode)[0], floor)
+            self.assertAlmostEqual(sum(ranking_weights(8, mode)), 1.0)
+        self.assertAlmostEqual(ranking_weights(8, "redraft")[2], 0.75)
+
     def test_weight_schedule(self):
         self.assertEqual(ranking_weights(0), (0.45, 0.55, 0.0))
         self.assertAlmostEqual(ranking_weights(1)[1], 0.45)
