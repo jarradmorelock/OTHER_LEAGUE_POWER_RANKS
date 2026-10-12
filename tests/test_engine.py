@@ -292,7 +292,15 @@ class EngineTests(unittest.TestCase):
         league = basic_snapshot([undefeated, favored], week=5)
         league.idp_partial = True
         league.defense_weight = 0.15
-        result = rank_league(league, bundle(ids, market, market))
+        league.roster_positions.append("DL")
+        market_bundle = bundle(ids, market, market)
+        market_bundle.players["dl1"] = PlayerIdentity("dl1", "dl1", "DL1", "DL")
+        market_bundle.players["dl2"] = PlayerIdentity("dl2", "dl2", "DL2", "DL")
+        undefeated.player_ids.append("dl1")
+        favored.player_ids.append("dl2")
+        market_bundle.books.append(ValueBook("IDP", "defense", {"dl1": 1, "dl2": 100},
+                                            raw_projection=True))
+        result = rank_league(league, market_bundle)
         self.assertEqual(result.teams[0].roster_id, 1)
 
 if __name__ == "__main__":
