@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: other-league-rankings
+  group: other-league-rankings-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
