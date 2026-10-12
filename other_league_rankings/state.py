@@ -68,3 +68,27 @@ class StateStore:
         finally:
             if temporary_path is not None and temporary_path.exists():
                 temporary_path.unlink()
+
+    def save_rank_history_only(self, league_key: str, result: RankingResult) -> None:
+        """Advance Tuesday movement baseline without suppressing Saturday Discord."""
+        existing = self.load(league_key)
+        path = self.path_for(league_key)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "last_post_key": existing.last_post_key,
+            "generated_at": result.generated_at,
+            "rank_by_roster_id": {str(team.roster_id): int(team.rank) for team in result.teams},
+        }
+        temporary_path = None
+        try:
+            with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent,
+                                             prefix=f".{league_key}.", suffix=".tmp", delete=False) as handle:
+                temporary_path = Path(handle.name)
+                json.dump(payload, handle, indent=2, sort_keys=True)
+                handle.write("\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary_path, path)
+        finally:
+            if temporary_path is not None and temporary_path.exists():
+                temporary_path.unlink()
