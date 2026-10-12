@@ -19,7 +19,7 @@
         "season": "#8291A5",
         "accent": "#EF7890"
       },
-      "market_mode": "keeper_redraft",
+      "market_mode": "redraft",
       "keeper_dynasty_share": 0.2
     },
     "rocky_top_rumble": {
@@ -63,7 +63,7 @@
         "season": "#62A78C",
         "accent": "#8ABAE8"
       },
-      "market_mode": "keeper_redraft",
+      "market_mode": "redraft",
       "keeper_dynasty_share": 0.2
     },
     "best_characters": {
@@ -84,7 +84,8 @@
         "lineup": "#51B5A0",
         "season": "#E6B84E",
         "accent": "#B993F0"
-      }
+      },
+      "market_mode": "dynasty"
     },
     "sec": {
       "league_id": "1341161857683058688",
@@ -106,7 +107,8 @@
         "defense": "#C98258",
         "season": "#8094A1",
         "accent": "#E3C65B"
-      }
+      },
+      "market_mode": "dynasty"
     },
     "dont_tell_my_wife": {
       "league_id": "1341970851624402944",
@@ -126,7 +128,8 @@
         "lineup": "#E9B955",
         "season": "#8295A4",
         "accent": "#5EC4BC"
-      }
+      },
+      "market_mode": "dynasty"
     }
   }
 }
