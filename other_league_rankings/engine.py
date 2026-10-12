@@ -67,12 +67,12 @@ def sec_ranking_weights(completed_weeks: int) -> tuple[float, float, float, floa
     if completed_weeks <= 0:
         return (0.45, 0.55, 0.0, 0.0)
     if completed_weeks >= 8:
-        return (0.20, 0.30, 0.40, 0.10)
+        return (0.15, 0.20, 0.55, 0.10)
     progress = max(0.0, (completed_weeks - 1) / 7.0)
     return (
-        0.30 - 0.10 * progress,
-        0.35 - 0.05 * progress,
-        0.20 + 0.20 * progress,
+        0.25 - 0.10 * progress,
+        0.35 - 0.15 * progress,
+        0.25 + 0.30 * progress,
         0.15 - 0.05 * progress,
     )
 
