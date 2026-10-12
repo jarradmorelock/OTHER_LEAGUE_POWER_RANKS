@@ -64,9 +64,9 @@ def ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple
     return (market, 1.0 - market - season, season)
 
 def sec_ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple[float, float, float, float]:
-    """SEC keeps IDP as a separate portion of the ROS forward-looking rating."""
+    """SEC keeps IDP at up to 40% of the ROS slice, with a 15% cap."""
     market, ros, season = ranking_weights(completed_weeks, market_mode)
-    defense = 0.0 if completed_weeks <= 0 else 0.15 - 0.05 * min(7, completed_weeks - 1) / 7
+    defense = 0.0 if completed_weeks <= 0 else min(0.15, 0.40 * ros)
     return (market, ros - defense, season, defense)
 
 
