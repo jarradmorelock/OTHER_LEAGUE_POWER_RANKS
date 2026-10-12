@@ -16,6 +16,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--league", choices=["all", *configs.keys()], default="all")
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true", help="Build graphics but do not post or advance state (default).")
+    mode.add_argument("--email", action="store_true", help="Send Tuesday publication email and write authoritative handoffs.")
     mode.add_argument("--publish", action="store_true", help="Post to each selected Discord Forum.")
     parser.add_argument("--force", action="store_true", help="Republish even if this league/week was already posted.")
     parser.add_argument("--week", type=int, help="Override Sleeper's current NFL week for a recovery run.")
@@ -40,6 +41,29 @@ def main(argv: list[str] | None = None) -> int:
         for warning in status.warnings:
             print(f"  warning: {warning}")
         failed |= status.state == "failed"
+    if args.email and not failed:
+        from .handoff import write_editorial_handoff
+        from .mailer import send_power_rankings_email
+        from .state import StateStore
+
+        selected = list(configs) if args.league == "all" else [args.league]
+        try:
+            for key in selected:
+                status = summary.statuses[key]
+                if status.result is None:
+                    raise RuntimeError(f"Missing completed ranking for {key}")
+                graphics = (Path("exports") / key / "power-rankings.png",
+                            Path("exports") / key / "championship-odds.png")
+                write_editorial_handoff(configs[key], status.result, graphics, Path("handoff"))
+            ranking_week = summary.statuses[selected[0]].result.league.week
+            print(send_power_rankings_email(
+                [configs[key] for key in selected], root=Path("exports"), week=ranking_week))
+            history = StateStore(Path("state"))
+            for key in selected:
+                history.save_rank_history_only(key, summary.statuses[key].result)
+        except Exception as exc:
+            print(f"Email/handoff failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+            failed = True
     return 1 if failed else 0
 
 
