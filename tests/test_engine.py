@@ -37,7 +37,7 @@ class EngineTests(unittest.TestCase):
         self.assertAlmostEqual(week_five[1], 0.0973214286)
         self.assertAlmostEqual(week_five[2], 0.65625)
         self.assertAlmostEqual(week_five[3], 0.1214285714)
-        self.assertEqual(sec_ranking_weights(8), (0.125, 0.025, 0.75, 0.10))
+        self.assertTrue(all(abs(a - b) < 1e-9 for a, b in zip(sec_ranking_weights(8), (0.125, 0.025, 0.75, 0.10))))
 
     def test_median_double_decisions_do_not_accelerate_completed_weeks(self):
         teams = [roster(1, ["1"], 4, 2, 300), roster(2, ["2"], 2, 4, 250)]
@@ -151,7 +151,7 @@ class EngineTests(unittest.TestCase):
         self.assertAlmostEqual(result.defense_weight, 0.1214285714)
         self.assertAlmostEqual(result.market_weight, 0.05)
         self.assertAlmostEqual(result.lineup_weight, 0.1723214286)
-        self.assertAlmostEqual(result.season_weight, 0.4214285714)
+        self.assertAlmostEqual(result.season_weight, 0.65625)
         self.assertAlmostEqual(result.market_weight + result.lineup_weight + result.season_weight + result.defense_weight, 1.0)
         self.assertGreater(by_id[1].defense_points, by_id[2].defense_points)
 
