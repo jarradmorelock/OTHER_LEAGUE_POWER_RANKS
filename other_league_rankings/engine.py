@@ -9,8 +9,8 @@ from datetime import datetime, timezone
 from .models import LeagueSnapshot, LeagueTeam, MarketBundle, PlayerIdentity, RankedTeam, RankingResult, ValueBook
 
 
-RECORD_SHARE_OF_SEASON = 0.80
-POINTS_SHARE_OF_SEASON = 0.20
+RECORD_SHARE_OF_SEASON = 0.75
+POINTS_SHARE_OF_SEASON = 0.25
 GUARDRAIL_MIN_GAMES = 8
 GUARDRAIL_WIN_GAP = 4.0
 GUARDRAIL_MAX_SCORE_LEAD = 10.0
@@ -48,33 +48,26 @@ class _TeamScore:
     record_guardrail_applied: bool = False
 
 
-def ranking_weights(completed_weeks: int) -> tuple[float, float, float]:
-    """Increase real-season influence every completed NFL week through Week 8."""
+def ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple[float, float, float]:
+    """Fade market rapidly; preserve a league-format-specific long-term floor."""
+    floors = {"dynasty": 0.125, "keeper_redraft": 0.05, "redraft": 0.0}
+    floor = floors.get(market_mode, 0.05)
     if completed_weeks <= 0:
         return (0.45, 0.55, 0.0)
-    if completed_weeks >= 8:
-        return (0.20, 0.25, 0.55)
-    progress = max(0.0, (completed_weeks - 1) / 7.0)
-    return (
-        0.30 - 0.10 * progress,
-        0.45 - 0.20 * progress,
-        0.25 + 0.30 * progress,
-    )
+    if completed_weeks < 4:
+        progress = (completed_weeks - 1) / 3.0
+        market = 0.30 + (floor - 0.30) * progress
+        season = 0.25 + 0.375 * progress
+    else:
+        market = floor
+        season = 0.625 + 0.125 * min(4, completed_weeks - 4) / 4.0
+    return (market, 1.0 - market - season, season)
 
-
-def sec_ranking_weights(completed_weeks: int) -> tuple[float, float, float, float]:
-    """Smoothly shift SEC weight toward results while retaining its IDP layer."""
-    if completed_weeks <= 0:
-        return (0.45, 0.55, 0.0, 0.0)
-    if completed_weeks >= 8:
-        return (0.15, 0.20, 0.55, 0.10)
-    progress = max(0.0, (completed_weeks - 1) / 7.0)
-    return (
-        0.25 - 0.10 * progress,
-        0.35 - 0.15 * progress,
-        0.25 + 0.30 * progress,
-        0.15 - 0.05 * progress,
-    )
+def sec_ranking_weights(completed_weeks: int, market_mode: str = "dynasty") -> tuple[float, float, float, float]:
+    """SEC keeps IDP as a separate portion of the ROS forward-looking rating."""
+    market, ros, season = ranking_weights(completed_weeks, market_mode)
+    defense = 0.0 if completed_weeks <= 0 else 0.15 - 0.05 * min(7, completed_weeks - 1) / 7
+    return (market, ros - defense, season, defense)
 
 
 def completed_regular_season_weeks(snapshot: LeagueSnapshot) -> int:
@@ -210,7 +203,7 @@ def rank_league(
             source_percentiles[book.name] = percentile_scores(totals)
             defense_sources.append(book.name)
     scheduled_defense_weight = (
-        sec_ranking_weights(completed_weeks)[3]
+        sec_ranking_weights(completed_weeks, bundle.market_mode)[3]
         if snapshot.idp_partial and snapshot.defense_weight > 0
         else 0.0
     )
@@ -257,7 +250,7 @@ def rank_league(
             for rid in roster_ids
         }
     if snapshot.idp_partial and snapshot.defense_weight > 0:
-        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks)
+        market_weight, lineup_weight, season_weight, scheduled_defense_weight = sec_ranking_weights(completed_weeks, bundle.market_mode)
         defense_weight = scheduled_defense_weight if defense_sources else 0.0
     else:
         market_weight, lineup_weight, season_weight = ranking_weights(completed_weeks)
