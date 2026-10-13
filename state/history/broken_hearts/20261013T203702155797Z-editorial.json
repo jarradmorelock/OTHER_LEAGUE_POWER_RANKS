@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-10-13T20:37:02.155797+00:00",
+  "league_id": "1391793948728492032",
+  "post_key": "2026-week-5",
+  "previous_rank_by_roster_id": {
+    "1": 2,
+    "10": 5,
+    "2": 3,
+    "3": 7,
+    "4": 6,
+    "5": 8,
+    "6": 1,
+    "7": 4,
+    "8": 10,
+    "9": 9
+  },
+  "publication": "editorial",
+  "rank_by_roster_id": {
+    "1": 1,
+    "10": 6,
+    "2": 4,
+    "3": 9,
+    "4": 5,
+    "5": 7,
+    "6": 2,
+    "7": 3,
+    "8": 8,
+    "9": 10
+  },
+  "ranking_week": 6,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 1,
+      "previous_rank": 2,
+      "rank": 1,
+      "roster_id": 1,
+      "score": 96.2,
+      "team": "Gibbs Me Head"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 1,
+      "rank": 2,
+      "roster_id": 6,
+      "score": 89.1,
+      "team": "Njigbas in Paris"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 4,
+      "rank": 3,
+      "roster_id": 7,
+      "score": 72.3,
+      "team": "Inches matter"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 3,
+      "rank": 4,
+      "roster_id": 2,
+      "score": 70.3,
+      "team": "The Garrett Gatsby"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 6,
+      "rank": 5,
+      "roster_id": 4,
+      "score": 53.6,
+      "team": "Stribling my lovehand"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 5,
+      "rank": 6,
+      "roster_id": 10,
+      "score": 39.7,
+      "team": "Parade of Horribles"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 8,
+      "rank": 7,
+      "roster_id": 5,
+      "score": 30.3,
+      "team": "The chase show"
+    },
+    {
+      "movement": 2,
+      "previous_rank": 10,
+      "rank": 8,
+      "roster_id": 8,
+      "score": 22.2,
+      "team": "GT397"
+    },
+    {
+      "movement": -2,
+      "previous_rank": 7,
+      "rank": 9,
+      "roster_id": 3,
+      "score": 19.1,
+      "team": "Unsolicited Nix Pics"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 9,
+      "rank": 10,
+      "roster_id": 9,
+      "score": 7.3,
+      "team": "Delta Stream"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-10-13T20:38:42.942453+00:00",
+  "league_id": "1341970851624402944",
+  "post_key": "2026-week-5",
+  "previous_rank_by_roster_id": {
+    "1": 6,
+    "10": 12,
+    "11": 5,
+    "12": 10,
+    "2": 7,
+    "3": 11,
+    "4": 3,
+    "5": 9,
+    "6": 4,
+    "7": 1,
+    "8": 2,
+    "9": 8
+  },
+  "publication": "editorial",
+  "rank_by_roster_id": {
+    "1": 5,
+    "10": 12,
+    "11": 8,
+    "12": 7,
+    "2": 9,
+    "3": 6,
+    "4": 4,
+    "5": 11,
+    "6": 3,
+    "7": 1,
+    "8": 2,
+    "9": 10
+  },
+  "ranking_week": 6,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 7,
+      "score": 89.8,
+      "team": "Flo Memorial Babes"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 8,
+      "score": 89.4,
+      "team": "Groningen Schatzi\u2019s"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 4,
+      "rank": 3,
+      "roster_id": 6,
+      "score": 65.2,
+      "team": "The #1 Loser"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 3,
+      "rank": 4,
+      "roster_id": 4,
+      "score": 55.1,
+      "team": "Bradford Jellybeans"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 6,
+      "rank": 5,
+      "roster_id": 1,
+      "score": 51.8,
+      "team": "Rex Memorial Cowboys"
+    },
+    {
+      "movement": 5,
+      "previous_rank": 11,
+      "rank": 6,
+      "roster_id": 3,
+      "score": 51.6,
+      "team": "Groton Naval Bruhs"
+    },
+    {
+      "movement": 3,
+      "previous_rank": 10,
+      "rank": 7,
+      "roster_id": 12,
+      "score": 50.6,
+      "team": "Newport Highlanders"
+    },
+    {
+      "movement": -3,
+      "previous_rank": 5,
+      "rank": 8,
+      "roster_id": 11,
+      "score": 47.9,
+      "team": "Waukesha Memorial Honeys"
+    },
+    {
+      "movement": -2,
+      "previous_rank": 7,
+      "rank": 9,
+      "roster_id": 2,
+      "score": 39.5,
+      "team": "Holston Valley Valentines"
+    },
+    {
+      "movement": -2,
+      "previous_rank": 8,
+      "rank": 10,
+      "roster_id": 9,
+      "score": 32.3,
+      "team": "Woodland38"
+    },
+    {
+      "movement": -2,
+      "previous_rank": 9,
+      "rank": 11,
+      "roster_id": 5,
+      "score": 18.8,
+      "team": "Los Alamitos Nerds"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 12,
+      "rank": 12,
+      "roster_id": 10,
+      "score": 7.9,
+      "team": "Good Samaritan Senbeis"
+    }
+  ]
+}

@@ -1,0 +1,606 @@
+{
+  "notes": [
+    "Authoritative power ranking from OTHER_LEAGUE_POWER_RANKS.",
+    "Division ranks must be calculated by filtering this overall order.",
+    "Scores include disclosed undefeated-record adjustments where applicable."
+  ],
+  "official_power_rankings": [
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 81.7,
+        "market_points": 10.21,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 100.0,
+        "ros_scoring_points": 21.88,
+        "season_results_percentile": 80.0,
+        "season_results_points": 52.5,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 10,
+      "score": 84.6,
+      "team": "Captain Malcolm Reynolds"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 21.7,
+        "market_points": 2.71,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 73.3,
+        "ros_scoring_points": 16.04,
+        "season_results_percentile": 96.7,
+        "season_results_points": 63.44,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 1,
+      "score": 82.2,
+      "team": "Creed Bratton"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 25.0,
+        "market_points": 3.12,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 93.3,
+        "ros_scoring_points": 20.42,
+        "season_results_percentile": 87.5,
+        "season_results_points": 57.42,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 2,
+      "previous_rank": 5,
+      "rank": 3,
+      "roster_id": 13,
+      "score": 81.0,
+      "team": "Earl of Lemongrab"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 58.3,
+        "market_points": 7.29,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 86.7,
+        "ros_scoring_points": 18.96,
+        "season_results_percentile": 80.8,
+        "season_results_points": 53.05,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 0,
+      "previous_rank": 4,
+      "rank": 4,
+      "roster_id": 7,
+      "score": 79.3,
+      "team": "Dexter Morgan"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 40.0,
+        "market_points": 5.0,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 66.7,
+        "ros_scoring_points": 14.58,
+        "season_results_percentile": 78.3,
+        "season_results_points": 51.41,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 2,
+      "previous_rank": 7,
+      "rank": 5,
+      "roster_id": 15,
+      "score": 71.0,
+      "team": "Planet Vegeta"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 53.3,
+        "market_points": 6.67,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 53.3,
+        "ros_scoring_points": 11.67,
+        "season_results_percentile": 73.3,
+        "season_results_points": 48.12,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 4,
+      "previous_rank": 10,
+      "rank": 6,
+      "roster_id": 5,
+      "score": 66.5,
+      "team": "Stay Puft Marshmallow Man"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 46.7,
+        "market_points": 5.83,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 80.0,
+        "ros_scoring_points": 17.5,
+        "season_results_percentile": 52.5,
+        "season_results_points": 34.45,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -1,
+      "previous_rank": 6,
+      "rank": 7,
+      "roster_id": 8,
+      "score": 57.8,
+      "team": "Kenny Powers"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 65.0,
+        "market_points": 8.12,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 40.0,
+        "ros_scoring_points": 8.75,
+        "season_results_percentile": 54.2,
+        "season_results_points": 35.55,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 1,
+      "previous_rank": 9,
+      "rank": 8,
+      "roster_id": 2,
+      "score": 52.4,
+      "team": "JamisonT1994"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 55.0,
+        "market_points": 6.88,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 60.0,
+        "ros_scoring_points": 13.12,
+        "season_results_percentile": 49.2,
+        "season_results_points": 32.27,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -6,
+      "previous_rank": 3,
+      "rank": 9,
+      "roster_id": 16,
+      "score": 52.3,
+      "team": "Chiefbighill"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 46.7,
+        "market_points": 5.83,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 13.3,
+        "ros_scoring_points": 2.92,
+        "season_results_percentile": 40.8,
+        "season_results_points": 26.8,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 5,
+      "previous_rank": 15,
+      "rank": 10,
+      "roster_id": 4,
+      "score": 35.5,
+      "team": "Roy\u2019sAngerManagementClass"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 71.7,
+        "market_points": 8.96,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 33.3,
+        "ros_scoring_points": 7.29,
+        "season_results_percentile": 28.3,
+        "season_results_points": 18.59,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -3,
+      "previous_rank": 8,
+      "rank": 11,
+      "roster_id": 3,
+      "score": 34.8,
+      "team": "The Doctor"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 60.0,
+        "market_points": 7.5,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 46.7,
+        "ros_scoring_points": 10.21,
+        "season_results_percentile": 17.5,
+        "season_results_points": 11.48,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -1,
+      "previous_rank": 11,
+      "rank": 12,
+      "roster_id": 12,
+      "score": 29.2,
+      "team": "Lord Farquaad"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 25.0,
+        "market_points": 3.12,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 20.0,
+        "ros_scoring_points": 4.38,
+        "season_results_percentile": 26.7,
+        "season_results_points": 17.5,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -1,
+      "previous_rank": 12,
+      "rank": 13,
+      "roster_id": 11,
+      "score": 25.0,
+      "team": "Uncle Rico"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 50.0,
+        "market_points": 6.25,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 0.0,
+        "ros_scoring_points": 0.0,
+        "season_results_percentile": 20.0,
+        "season_results_points": 13.12,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -1,
+      "previous_rank": 13,
+      "rank": 14,
+      "roster_id": 14,
+      "score": 19.4,
+      "team": "Shoresy"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 26.7,
+        "market_points": 3.33,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 26.7,
+        "ros_scoring_points": 5.83,
+        "season_results_percentile": 12.5,
+        "season_results_points": 8.2,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": 1,
+      "previous_rank": 16,
+      "rank": 15,
+      "roster_id": 9,
+      "score": 17.4,
+      "team": "Lt. Dan\u2019s Marching Band"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 73.3,
+        "market_points": 9.17,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 6.7,
+        "ros_scoring_points": 1.46,
+        "season_results_percentile": 1.7,
+        "season_results_points": 1.09,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.21875,
+          "season_results": 0.65625
+        }
+      },
+      "movement": -2,
+      "previous_rank": 14,
+      "rank": 16,
+      "roster_id": 6,
+      "score": 11.7,
+      "team": "Megamind"
+    }
+  ],
+  "playoff_odds": [
+    {
+      "bye": 0.0,
+      "championship": 13.5,
+      "division": 0.0,
+      "final": 24.5,
+      "playoff": 80.7,
+      "projected_record": "12-2",
+      "roster_id": 10,
+      "team": "Captain Malcolm Reynolds"
+    },
+    {
+      "bye": 0.0,
+      "championship": 10.5,
+      "division": 0.0,
+      "final": 20.0,
+      "playoff": 83.9,
+      "projected_record": "14-0",
+      "roster_id": 1,
+      "team": "Creed Bratton"
+    },
+    {
+      "bye": 0.0,
+      "championship": 12.4,
+      "division": 0.0,
+      "final": 22.8,
+      "playoff": 83.5,
+      "projected_record": "13-1",
+      "roster_id": 13,
+      "team": "Earl of Lemongrab"
+    },
+    {
+      "bye": 0.0,
+      "championship": 11.4,
+      "division": 0.0,
+      "final": 22.0,
+      "playoff": 82.9,
+      "projected_record": "12-2",
+      "roster_id": 7,
+      "team": "Dexter Morgan"
+    },
+    {
+      "bye": 0.0,
+      "championship": 8.9,
+      "division": 0.0,
+      "final": 18.8,
+      "playoff": 77.3,
+      "projected_record": "11-3",
+      "roster_id": 15,
+      "team": "Planet Vegeta"
+    },
+    {
+      "bye": 0.0,
+      "championship": 6.4,
+      "division": 0.0,
+      "final": 14.6,
+      "playoff": 69.2,
+      "projected_record": "11-3",
+      "roster_id": 5,
+      "team": "Stay Puft Marshmallow Man"
+    },
+    {
+      "bye": 0.0,
+      "championship": 10.1,
+      "division": 0.0,
+      "final": 20.2,
+      "playoff": 72.2,
+      "projected_record": "11-3",
+      "roster_id": 8,
+      "team": "Kenny Powers"
+    },
+    {
+      "bye": 0.0,
+      "championship": 4.0,
+      "division": 0.0,
+      "final": 9.2,
+      "playoff": 46.1,
+      "projected_record": "10-4",
+      "roster_id": 2,
+      "team": "JamisonT1994"
+    },
+    {
+      "bye": 0.0,
+      "championship": 7.0,
+      "division": 0.0,
+      "final": 15.2,
+      "playoff": 63.8,
+      "projected_record": "10-4",
+      "roster_id": 16,
+      "team": "Chiefbighill"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.0,
+      "division": 0.0,
+      "final": 4.2,
+      "playoff": 18.9,
+      "projected_record": "8-6",
+      "roster_id": 4,
+      "team": "Roy\u2019sAngerManagementClass"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.9,
+      "division": 0.0,
+      "final": 6.2,
+      "playoff": 28.7,
+      "projected_record": "9-5",
+      "roster_id": 3,
+      "team": "The Doctor"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.5,
+      "division": 0.0,
+      "final": 5.2,
+      "playoff": 22.0,
+      "projected_record": "8-6",
+      "roster_id": 12,
+      "team": "Lord Farquaad"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.2,
+      "division": 0.0,
+      "final": 4.5,
+      "playoff": 20.2,
+      "projected_record": "8-6",
+      "roster_id": 11,
+      "team": "Uncle Rico"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.0,
+      "division": 0.0,
+      "final": 4.0,
+      "playoff": 16.2,
+      "projected_record": "6-8",
+      "roster_id": 14,
+      "team": "Shoresy"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.1,
+      "division": 0.0,
+      "final": 4.4,
+      "playoff": 18.3,
+      "projected_record": "7-7",
+      "roster_id": 9,
+      "team": "Lt. Dan\u2019s Marching Band"
+    },
+    {
+      "bye": 0.0,
+      "championship": 2.0,
+      "division": 0.0,
+      "final": 4.0,
+      "playoff": 16.1,
+      "projected_record": "3-11",
+      "roster_id": 6,
+      "team": "Megamind"
+    }
+  ],
+  "publication_assets": {
+    "playoff_forecast": {
+      "filename": "hollywood_beat-playoff-forecast.png",
+      "generated_at": "2026-10-13T20:38:13.290641+00:00",
+      "media_type": "image/png",
+      "sha256": "4da0000378adf1cf2bc8f7f6e779e6820cc153adfc155fe1a978dccfb5b1a9f1"
+    },
+    "power_rankings": {
+      "filename": "hollywood_beat-power-rankings.png",
+      "generated_at": "2026-10-13T20:38:13.290641+00:00",
+      "media_type": "image/png",
+      "sha256": "ab613f50568f5ad9cfaddaa12df9de73aae0152a92b045dcc225000458a11ed1"
+    }
+  },
+  "publication_key": "hollywood_beat",
+  "schema_version": 3,
+  "source_metadata": {
+    "dynasty_sources": [
+      "KeepTradeCut",
+      "FantasyCalc",
+      "DynastyProcess",
+      "DynastySuperflex"
+    ],
+    "generated_at": "2026-10-13T20:38:13.290641+00:00",
+    "league_id": "1333195168139968512",
+    "league_key": "best_characters",
+    "lineup_sources": [
+      "Sleeper ROS scoring projections"
+    ],
+    "model_version": "cross-league-record-v2",
+    "producer": "OTHER_LEAGUE_POWER_RANKS",
+    "ranking_week": 6,
+    "results_through_week": 5,
+    "season": 2026
+  }
+}
