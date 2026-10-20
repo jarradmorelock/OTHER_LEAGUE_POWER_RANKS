@@ -9,18 +9,18 @@
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 90.0,
-        "market_points": 4.5,
+        "market_percentile": 91.0,
+        "market_points": 4.55,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 100.0,
-        "ros_scoring_points": 29.37,
+        "ros_scoring_points": 26.25,
         "season_results_percentile": 100.0,
-        "season_results_points": 65.62,
+        "season_results_points": 68.75,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
       "movement": 0,
@@ -34,68 +34,68 @@
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 65.0,
-        "market_points": 3.25,
+        "market_percentile": 61.0,
+        "market_points": 3.05,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 80.0,
-        "ros_scoring_points": 23.5,
-        "season_results_percentile": 75.0,
-        "season_results_points": 49.22,
+        "ros_scoring_percentile": 60.0,
+        "ros_scoring_points": 15.75,
+        "season_results_percentile": 80.0,
+        "season_results_points": 55.0,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
-      "movement": 1,
-      "previous_rank": 3,
+      "movement": 0,
+      "previous_rank": 2,
       "rank": 2,
       "roster_id": 4,
-      "score": 76.0,
+      "score": 73.8,
       "team": "Ctrl+Alt+Elite"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 83.0,
-        "market_points": 4.15,
+        "market_percentile": 84.0,
+        "market_points": 4.2,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 60.0,
-        "ros_scoring_points": 17.62,
-        "season_results_percentile": 65.0,
-        "season_results_points": 42.66,
+        "ros_scoring_percentile": 80.0,
+        "ros_scoring_points": 21.0,
+        "season_results_percentile": 60.0,
+        "season_results_points": 41.25,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
-      "movement": -1,
-      "previous_rank": 2,
+      "movement": 0,
+      "previous_rank": 3,
       "rank": 3,
       "roster_id": 1,
-      "score": 64.4,
+      "score": 66.4,
       "team": "Morelock Mountain Mashers"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 42.0,
-        "market_points": 2.1,
+        "market_percentile": 43.0,
+        "market_points": 2.15,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 40.0,
-        "ros_scoring_points": 11.75,
+        "ros_scoring_points": 10.5,
         "season_results_percentile": 40.0,
-        "season_results_points": 26.25,
+        "season_results_points": 27.5,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
       "movement": 0,
@@ -109,127 +109,127 @@
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 0.0,
-        "market_points": 0.0,
+        "market_percentile": 21.0,
+        "market_points": 1.05,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 20.0,
-        "ros_scoring_points": 5.87,
-        "season_results_percentile": 7.5,
-        "season_results_points": 4.92,
+        "ros_scoring_percentile": 0.0,
+        "ros_scoring_points": 0.0,
+        "season_results_percentile": 20.0,
+        "season_results_points": 13.75,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
       "movement": 1,
       "previous_rank": 6,
       "rank": 5,
-      "roster_id": 3,
-      "score": 10.8,
-      "team": "Greta Van Flea-Flickers"
+      "roster_id": 5,
+      "score": 14.8,
+      "team": "GymDandys"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 20.0,
-        "market_points": 1.0,
+        "market_percentile": 0.0,
+        "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 0.0,
-        "ros_scoring_points": 0.0,
-        "season_results_percentile": 12.5,
-        "season_results_points": 8.2,
+        "ros_scoring_percentile": 20.0,
+        "ros_scoring_points": 5.25,
+        "season_results_percentile": 0.0,
+        "season_results_points": 0.0,
         "weights": {
           "defense": 0.0,
           "market": 0.05,
-          "ros_scoring": 0.29374999999999996,
-          "season_results": 0.65625
+          "ros_scoring": 0.26249999999999996,
+          "season_results": 0.6875
         }
       },
       "movement": -1,
       "previous_rank": 5,
       "rank": 6,
-      "roster_id": 5,
-      "score": 9.2,
-      "team": "GymDandys"
+      "roster_id": 3,
+      "score": 5.2,
+      "team": "Greta Van Flea-Flickers"
     }
   ],
   "playoff_odds": [
     {
-      "bye": 78.5,
-      "championship": 37.1,
+      "bye": 80.6,
+      "championship": 39.4,
       "division": 0.0,
-      "final": 53.2,
+      "final": 55.6,
       "playoff": 100.0,
       "projected_record": "14-0",
       "roster_id": 2,
       "team": "BenONe"
     },
     {
-      "bye": 64.0,
-      "championship": 20.5,
+      "bye": 55.2,
+      "championship": 19.1,
       "division": 0.0,
-      "final": 37.6,
+      "final": 38.0,
       "playoff": 100.0,
-      "projected_record": "12-2",
+      "projected_record": "14-0",
       "roster_id": 4,
       "team": "Ctrl+Alt+Elite"
     },
     {
-      "bye": 24.4,
-      "championship": 16.4,
+      "bye": 35.6,
+      "championship": 19.8,
       "division": 0.0,
-      "final": 37.5,
+      "final": 41.5,
       "playoff": 100.0,
-      "projected_record": "11-3",
+      "projected_record": "13-1",
       "roster_id": 1,
       "team": "Morelock Mountain Mashers"
     },
     {
-      "bye": 11.7,
-      "championship": 12.4,
+      "bye": 9.5,
+      "championship": 8.7,
       "division": 0.0,
-      "final": 31.7,
+      "final": 25.1,
       "playoff": 100.0,
-      "projected_record": "9-5",
+      "projected_record": "7-7",
       "roster_id": 6,
       "team": "Takeoffs & Touchdowns"
     },
     {
-      "bye": 10.7,
-      "championship": 7.7,
+      "bye": 9.5,
+      "championship": 5.7,
       "division": 0.0,
-      "final": 22.5,
+      "final": 17.4,
+      "playoff": 100.0,
+      "projected_record": "5-9",
+      "roster_id": 5,
+      "team": "GymDandys"
+    },
+    {
+      "bye": 9.5,
+      "championship": 7.3,
+      "division": 0.0,
+      "final": 22.4,
       "playoff": 100.0,
       "projected_record": "5-9",
       "roster_id": 3,
       "team": "Greta Van Flea-Flickers"
-    },
-    {
-      "bye": 10.7,
-      "championship": 6.0,
-      "division": 0.0,
-      "final": 17.5,
-      "playoff": 100.0,
-      "projected_record": "4-10",
-      "roster_id": 5,
-      "team": "GymDandys"
     }
   ],
   "publication_assets": {
     "playoff_forecast": {
       "filename": "volunteer_voice-playoff-forecast.png",
-      "generated_at": "2026-10-13T20:37:12.070088+00:00",
+      "generated_at": "2026-10-20T19:09:30.975533+00:00",
       "media_type": "image/png",
-      "sha256": "9b374a5379640f6756828e671a3dbad74953e932db4a530c756fd846b341bfad"
+      "sha256": "64b997330211b6f5ca0d198c8a429113b4f0c37a64791734688669c529113928"
     },
     "power_rankings": {
       "filename": "volunteer_voice-power-rankings.png",
-      "generated_at": "2026-10-13T20:37:12.070088+00:00",
+      "generated_at": "2026-10-20T19:09:30.975533+00:00",
       "media_type": "image/png",
-      "sha256": "9cae68e6fb64cbd1a44d1b5efceaac7a6e17fbe42d3e02f7ff73f6cc33a1f20c"
+      "sha256": "51e00f97d1581bc19b6fc2b33813c7157d52e56c1845c2df8549c0033ded4bed"
     }
   },
   "publication_key": "volunteer_voice",
@@ -242,7 +242,7 @@
       "DynastyProcess",
       "DynastySuperflex"
     ],
-    "generated_at": "2026-10-13T20:37:12.070088+00:00",
+    "generated_at": "2026-10-20T19:09:30.975533+00:00",
     "league_id": "1314710277232553984",
     "league_key": "rocky_top_rumble",
     "lineup_sources": [
@@ -250,8 +250,8 @@
     ],
     "model_version": "cross-league-record-v2",
     "producer": "OTHER_LEAGUE_POWER_RANKS",
-    "ranking_week": 6,
-    "results_through_week": 5,
+    "ranking_week": 7,
+    "results_through_week": 6,
     "season": 2026
   }
 }

@@ -7,562 +7,562 @@
   "official_power_rankings": [
     {
       "components": {
-        "defense_percentile": 73.3,
-        "defense_points": 6.42,
+        "defense_percentile": 80.0,
+        "defense_points": 6.0,
         "market_percentile": 91.7,
         "market_points": 11.46,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 93.3,
-        "ros_scoring_points": 12.25,
+        "ros_scoring_points": 10.5,
         "season_results_percentile": 100.0,
-        "season_results_points": 65.62,
+        "season_results_points": 68.75,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
       "movement": 0,
       "previous_rank": 1,
       "rank": 1,
       "roster_id": 13,
-      "score": 95.8,
+      "score": 96.7,
       "team": "Mississippi State"
     },
     {
       "components": {
-        "defense_percentile": 20.0,
-        "defense_points": 1.75,
-        "market_percentile": 78.3,
-        "market_points": 9.79,
+        "defense_percentile": 40.0,
+        "defense_points": 3.0,
+        "market_percentile": 76.7,
+        "market_points": 9.58,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 86.7,
-        "ros_scoring_points": 11.37,
-        "season_results_percentile": 86.7,
-        "season_results_points": 56.88,
+        "ros_scoring_percentile": 80.0,
+        "ros_scoring_points": 9.0,
+        "season_results_percentile": 89.2,
+        "season_results_points": 61.3,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
       "movement": 0,
       "previous_rank": 2,
       "rank": 2,
       "roster_id": 5,
-      "score": 79.8,
+      "score": 82.9,
       "team": "Georgia Bulldogs"
     },
     {
       "components": {
-        "defense_percentile": 53.3,
-        "defense_points": 4.67,
-        "market_percentile": 55.0,
-        "market_points": 6.88,
+        "defense_percentile": 20.0,
+        "defense_points": 1.5,
+        "market_percentile": 58.3,
+        "market_points": 7.29,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 80.0,
-        "ros_scoring_points": 10.5,
-        "season_results_percentile": 85.0,
-        "season_results_points": 55.78,
+        "ros_scoring_percentile": 86.7,
+        "ros_scoring_points": 9.75,
+        "season_results_percentile": 85.8,
+        "season_results_points": 59.01,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 2,
-      "previous_rank": 5,
+      "movement": 0,
+      "previous_rank": 3,
       "rank": 3,
       "roster_id": 6,
-      "score": 77.8,
+      "score": 77.6,
       "team": "Tennessee Volunteers"
     },
     {
       "components": {
-        "defense_percentile": 40.0,
-        "defense_points": 3.5,
-        "market_percentile": 61.7,
-        "market_points": 7.71,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 60.0,
-        "ros_scoring_points": 7.87,
-        "season_results_percentile": 81.7,
-        "season_results_points": 53.59,
-        "weights": {
-          "defense": 0.08750000000000001,
-          "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
-        }
-      },
-      "movement": 0,
-      "previous_rank": 4,
-      "rank": 4,
-      "roster_id": 15,
-      "score": 72.7,
-      "team": "Alabama Crimson Tide"
-    },
-    {
-      "components": {
-        "defense_percentile": 33.3,
-        "defense_points": 2.92,
-        "market_percentile": 71.7,
-        "market_points": 8.96,
+        "defense_percentile": 30.0,
+        "defense_points": 2.25,
+        "market_percentile": 73.3,
+        "market_points": 9.17,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 100.0,
-        "ros_scoring_points": 13.12,
-        "season_results_percentile": 68.3,
-        "season_results_points": 44.84,
+        "ros_scoring_points": 11.25,
+        "season_results_percentile": 78.3,
+        "season_results_points": 53.85,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": -2,
-      "previous_rank": 3,
-      "rank": 5,
+      "movement": 1,
+      "previous_rank": 5,
+      "rank": 4,
       "roster_id": 2,
-      "score": 69.8,
+      "score": 76.5,
       "team": "Florida Gators"
     },
     {
       "components": {
-        "defense_percentile": 86.7,
-        "defense_points": 7.58,
-        "market_percentile": 30.0,
-        "market_points": 3.75,
+        "defense_percentile": 73.3,
+        "defense_points": 5.5,
+        "market_percentile": 28.3,
+        "market_points": 3.54,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 73.3,
-        "ros_scoring_points": 9.62,
-        "season_results_percentile": 63.3,
-        "season_results_points": 41.56,
+        "ros_scoring_percentile": 66.7,
+        "ros_scoring_points": 7.5,
+        "season_results_percentile": 75.0,
+        "season_results_points": 51.56,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 0,
+      "movement": 1,
       "previous_rank": 6,
-      "rank": 6,
+      "rank": 5,
       "roster_id": 11,
-      "score": 62.5,
+      "score": 68.1,
       "team": "Ole Miss Rebels"
     },
     {
       "components": {
-        "defense_percentile": 66.7,
-        "defense_points": 5.83,
-        "market_percentile": 40.0,
-        "market_points": 5.0,
+        "defense_percentile": 60.0,
+        "defense_points": 4.5,
+        "market_percentile": 61.7,
+        "market_points": 7.71,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 66.7,
-        "ros_scoring_points": 8.75,
-        "season_results_percentile": 56.7,
-        "season_results_points": 37.19,
+        "ros_scoring_percentile": 60.0,
+        "ros_scoring_points": 6.75,
+        "season_results_percentile": 70.0,
+        "season_results_points": 48.12,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 3,
-      "previous_rank": 10,
+      "movement": -2,
+      "previous_rank": 4,
+      "rank": 6,
+      "roster_id": 15,
+      "score": 67.1,
+      "team": "Alabama Crimson Tide"
+    },
+    {
+      "components": {
+        "defense_percentile": 86.7,
+        "defense_points": 6.5,
+        "market_percentile": 43.3,
+        "market_points": 5.42,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 73.3,
+        "ros_scoring_points": 8.25,
+        "season_results_percentile": 48.3,
+        "season_results_points": 33.23,
+        "weights": {
+          "defense": 0.07500000000000001,
+          "market": 0.125,
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
+        }
+      },
+      "movement": 0,
+      "previous_rank": 7,
       "rank": 7,
       "roster_id": 10,
-      "score": 56.8,
+      "score": 53.4,
       "team": "Auburn Tigers"
     },
     {
       "components": {
-        "defense_percentile": 100.0,
-        "defense_points": 8.75,
-        "market_percentile": 6.7,
-        "market_points": 0.83,
+        "defense_percentile": 46.7,
+        "defense_points": 3.5,
+        "market_percentile": 45.0,
+        "market_points": 5.62,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 26.7,
-        "ros_scoring_points": 3.5,
-        "season_results_percentile": 58.3,
-        "season_results_points": 38.28,
+        "ros_scoring_points": 3.0,
+        "season_results_percentile": 51.7,
+        "season_results_points": 35.52,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 4,
-      "previous_rank": 12,
+      "movement": 2,
+      "previous_rank": 10,
       "rank": 8,
-      "roster_id": 4,
-      "score": 51.4,
-      "team": "Lousiana State University"
-    },
-    {
-      "components": {
-        "defense_percentile": 80.0,
-        "defense_points": 7.0,
-        "market_percentile": 31.7,
-        "market_points": 3.96,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 40.0,
-        "ros_scoring_points": 5.25,
-        "season_results_percentile": 50.0,
-        "season_results_points": 32.81,
-        "weights": {
-          "defense": 0.08750000000000001,
-          "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
-        }
-      },
-      "movement": 0,
-      "previous_rank": 9,
-      "rank": 9,
-      "roster_id": 9,
-      "score": 49.0,
-      "team": "Texas A&M"
-    },
-    {
-      "components": {
-        "defense_percentile": 13.3,
-        "defense_points": 1.17,
-        "market_percentile": 68.3,
-        "market_points": 8.54,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 46.7,
-        "ros_scoring_points": 6.12,
-        "season_results_percentile": 35.0,
-        "season_results_points": 22.97,
-        "weights": {
-          "defense": 0.08750000000000001,
-          "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
-        }
-      },
-      "movement": -3,
-      "previous_rank": 7,
-      "rank": 10,
-      "roster_id": 14,
-      "score": 38.8,
-      "team": "Arkansas Razorbacks"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 55.0,
-        "market_points": 6.88,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 33.3,
-        "ros_scoring_points": 4.37,
-        "season_results_percentile": 40.0,
-        "season_results_points": 26.25,
-        "weights": {
-          "defense": 0.08750000000000001,
-          "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
-        }
-      },
-      "movement": 0,
-      "previous_rank": 11,
-      "rank": 11,
       "roster_id": 12,
-      "score": 37.5,
+      "score": 47.6,
       "team": "Oklahoma Sooners"
     },
     {
       "components": {
-        "defense_percentile": 46.7,
-        "defense_points": 4.08,
-        "market_percentile": 40.0,
-        "market_points": 5.0,
+        "defense_percentile": 13.3,
+        "defense_points": 1.0,
+        "market_percentile": 68.3,
+        "market_points": 8.54,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 20.0,
-        "ros_scoring_points": 2.62,
-        "season_results_percentile": 33.3,
-        "season_results_points": 21.87,
+        "ros_scoring_percentile": 53.3,
+        "ros_scoring_points": 6.0,
+        "season_results_percentile": 45.0,
+        "season_results_points": 30.94,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 1,
-      "previous_rank": 13,
-      "rank": 12,
-      "roster_id": 7,
-      "score": 33.6,
-      "team": "Texas Longhorns"
+      "movement": 2,
+      "previous_rank": 11,
+      "rank": 9,
+      "roster_id": 14,
+      "score": 46.5,
+      "team": "Arkansas Razorbacks"
     },
     {
       "components": {
         "defense_percentile": 93.3,
-        "defense_points": 8.17,
-        "market_percentile": 56.7,
-        "market_points": 7.08,
+        "defense_points": 7.0,
+        "market_percentile": 30.0,
+        "market_points": 3.75,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 53.3,
-        "ros_scoring_points": 7.0,
-        "season_results_percentile": 4.2,
-        "season_results_points": 2.73,
+        "ros_scoring_percentile": 46.7,
+        "ros_scoring_points": 5.25,
+        "season_results_percentile": 40.0,
+        "season_results_points": 27.5,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": -5,
+      "movement": -1,
+      "previous_rank": 9,
+      "rank": 10,
+      "roster_id": 9,
+      "score": 43.5,
+      "team": "Texas A&M"
+    },
+    {
+      "components": {
+        "defense_percentile": 100.0,
+        "defense_points": 7.5,
+        "market_percentile": 6.7,
+        "market_points": 0.83,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 20.0,
+        "ros_scoring_points": 2.25,
+        "season_results_percentile": 46.7,
+        "season_results_points": 32.08,
+        "weights": {
+          "defense": 0.07500000000000001,
+          "market": 0.125,
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
+        }
+      },
+      "movement": -3,
       "previous_rank": 8,
+      "rank": 11,
+      "roster_id": 4,
+      "score": 42.7,
+      "team": "Lousiana State University"
+    },
+    {
+      "components": {
+        "defense_percentile": 30.0,
+        "defense_points": 2.25,
+        "market_percentile": 43.3,
+        "market_points": 5.42,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 33.3,
+        "ros_scoring_points": 3.75,
+        "season_results_percentile": 28.3,
+        "season_results_points": 19.48,
+        "weights": {
+          "defense": 0.07500000000000001,
+          "market": 0.125,
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
+        }
+      },
+      "movement": 0,
+      "previous_rank": 12,
+      "rank": 12,
+      "roster_id": 7,
+      "score": 30.9,
+      "team": "Texas Longhorns"
+    },
+    {
+      "components": {
+        "defense_percentile": 53.3,
+        "defense_points": 4.0,
+        "market_percentile": 53.3,
+        "market_points": 6.67,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 40.0,
+        "ros_scoring_points": 4.5,
+        "season_results_percentile": 13.3,
+        "season_results_points": 9.17,
+        "weights": {
+          "defense": 0.07500000000000001,
+          "market": 0.125,
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
+        }
+      },
+      "movement": 0,
+      "previous_rank": 13,
       "rank": 13,
       "roster_id": 16,
-      "score": 25.0,
+      "score": 24.3,
       "team": "Missouri Tigers"
     },
     {
       "components": {
         "defense_percentile": 6.7,
-        "defense_points": 0.58,
-        "market_percentile": 41.7,
-        "market_points": 5.21,
+        "defense_points": 0.5,
+        "market_percentile": 43.3,
+        "market_points": 5.42,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 13.3,
-        "ros_scoring_points": 1.75,
-        "season_results_percentile": 19.2,
-        "season_results_points": 12.58,
+        "ros_scoring_points": 1.5,
+        "season_results_percentile": 16.7,
+        "season_results_points": 11.46,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
       "movement": 0,
       "previous_rank": 14,
       "rank": 14,
       "roster_id": 8,
-      "score": 20.1,
+      "score": 18.9,
       "team": "Kentucky Wildcats"
     },
     {
       "components": {
-        "defense_percentile": 26.7,
-        "defense_points": 2.33,
-        "market_percentile": 18.3,
-        "market_points": 2.29,
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 23.3,
+        "market_points": 2.92,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 6.7,
-        "ros_scoring_points": 0.87,
-        "season_results_percentile": 15.8,
-        "season_results_points": 10.39,
+        "ros_scoring_points": 0.75,
+        "season_results_percentile": 11.7,
+        "season_results_points": 8.02,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": 1,
-      "previous_rank": 16,
+      "movement": 0,
+      "previous_rank": 15,
       "rank": 15,
       "roster_id": 3,
-      "score": 15.9,
+      "score": 11.7,
       "team": "Vanderbilt"
     },
     {
       "components": {
-        "defense_percentile": 60.0,
-        "defense_points": 5.25,
+        "defense_percentile": 66.7,
+        "defense_points": 5.0,
         "market_percentile": 53.3,
         "market_points": 6.67,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 0.0,
         "ros_scoring_points": 0.0,
-        "season_results_percentile": 2.5,
-        "season_results_points": 1.64,
+        "season_results_percentile": 0.0,
+        "season_results_points": 0.0,
         "weights": {
-          "defense": 0.08750000000000001,
+          "defense": 0.07500000000000001,
           "market": 0.125,
-          "ros_scoring": 0.13124999999999998,
-          "season_results": 0.65625
+          "ros_scoring": 0.11249999999999999,
+          "season_results": 0.6875
         }
       },
-      "movement": -1,
-      "previous_rank": 15,
+      "movement": 0,
+      "previous_rank": 16,
       "rank": 16,
       "roster_id": 1,
-      "score": 13.6,
+      "score": 11.7,
       "team": "South Carolina Gamecocks"
     }
   ],
   "playoff_odds": [
     {
-      "bye": 64.6,
-      "championship": 23.8,
-      "division": 70.2,
-      "final": 40.3,
-      "playoff": 79.7,
+      "bye": 66.0,
+      "championship": 24.1,
+      "division": 73.2,
+      "final": 41.3,
+      "playoff": 82.0,
       "projected_record": "12-2",
       "roster_id": 13,
       "team": "Mississippi State"
     },
     {
-      "bye": 20.2,
-      "championship": 11.5,
-      "division": 19.2,
-      "final": 24.4,
-      "playoff": 73.7,
-      "projected_record": "9-5",
+      "bye": 18.7,
+      "championship": 10.8,
+      "division": 16.3,
+      "final": 24.6,
+      "playoff": 79.3,
+      "projected_record": "10-4",
       "roster_id": 5,
       "team": "Georgia Bulldogs"
     },
     {
-      "bye": 19.0,
-      "championship": 9.6,
-      "division": 17.7,
-      "final": 22.2,
-      "playoff": 73.9,
+      "bye": 30.8,
+      "championship": 13.2,
+      "division": 29.2,
+      "final": 27.7,
+      "playoff": 80.7,
       "projected_record": "10-4",
       "roster_id": 6,
       "team": "Tennessee Volunteers"
     },
     {
-      "bye": 8.7,
-      "championship": 5.0,
-      "division": 8.2,
-      "final": 13.5,
-      "playoff": 56.9,
-      "projected_record": "9-5",
-      "roster_id": 15,
-      "team": "Alabama Crimson Tide"
-    },
-    {
-      "bye": 39.5,
-      "championship": 21.7,
-      "division": 37.7,
-      "final": 36.2,
-      "playoff": 78.0,
+      "bye": 38.5,
+      "championship": 21.6,
+      "division": 35.6,
+      "final": 37.2,
+      "playoff": 80.8,
       "projected_record": "10-4",
       "roster_id": 2,
       "team": "Florida Gators"
     },
     {
-      "bye": 5.3,
+      "bye": 4.9,
       "championship": 4.3,
-      "division": 4.9,
-      "final": 10.6,
-      "playoff": 43.7,
+      "division": 4.8,
+      "final": 11.1,
+      "playoff": 50.4,
       "projected_record": "8-6",
       "roster_id": 11,
       "team": "Ole Miss Rebels"
     },
     {
-      "bye": 5.5,
-      "championship": 4.1,
-      "division": 5.1,
-      "final": 10.5,
-      "playoff": 44.5,
+      "bye": 4.7,
+      "championship": 3.6,
+      "division": 4.5,
+      "final": 9.2,
+      "playoff": 47.5,
+      "projected_record": "8-6",
+      "roster_id": 15,
+      "team": "Alabama Crimson Tide"
+    },
+    {
+      "bye": 3.9,
+      "championship": 4.8,
+      "division": 3.7,
+      "final": 11.3,
+      "playoff": 45.8,
       "projected_record": "8-6",
       "roster_id": 10,
       "team": "Auburn Tigers"
     },
     {
-      "bye": 4.1,
-      "championship": 2.1,
-      "division": 4.1,
-      "final": 4.5,
-      "playoff": 18.3,
-      "projected_record": "7-7",
-      "roster_id": 4,
-      "team": "Lousiana State University"
-    },
-    {
-      "bye": 4.6,
-      "championship": 2.7,
-      "division": 4.4,
-      "final": 6.2,
-      "playoff": 26.4,
-      "projected_record": "7-7",
-      "roster_id": 9,
-      "team": "Texas A&M"
-    },
-    {
-      "bye": 4.2,
-      "championship": 2.8,
-      "division": 4.3,
-      "final": 6.5,
-      "playoff": 26.2,
-      "projected_record": "7-7",
-      "roster_id": 14,
-      "team": "Arkansas Razorbacks"
-    },
-    {
-      "bye": 4.1,
-      "championship": 2.2,
-      "division": 4.1,
-      "final": 4.6,
-      "playoff": 16.3,
+      "bye": 3.6,
+      "championship": 1.9,
+      "division": 3.6,
+      "final": 4.1,
+      "playoff": 15.3,
       "projected_record": "6-8",
       "roster_id": 12,
       "team": "Oklahoma Sooners"
     },
     {
-      "bye": 4.0,
-      "championship": 2.0,
-      "division": 4.0,
-      "final": 4.0,
-      "playoff": 12.4,
+      "bye": 3.7,
+      "championship": 2.7,
+      "division": 3.8,
+      "final": 6.4,
+      "playoff": 27.5,
+      "projected_record": "7-7",
+      "roster_id": 14,
+      "team": "Arkansas Razorbacks"
+    },
+    {
+      "bye": 3.7,
+      "championship": 2.3,
+      "division": 3.7,
+      "final": 5.2,
+      "playoff": 21.1,
+      "projected_record": "7-7",
+      "roster_id": 9,
+      "team": "Texas A&M"
+    },
+    {
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.9,
+      "playoff": 14.5,
+      "projected_record": "6-8",
+      "roster_id": 4,
+      "team": "Lousiana State University"
+    },
+    {
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.7,
+      "playoff": 11.7,
       "projected_record": "5-9",
       "roster_id": 7,
       "team": "Texas Longhorns"
     },
     {
-      "bye": 4.0,
-      "championship": 2.1,
-      "division": 4.0,
-      "final": 4.4,
-      "playoff": 13.8,
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.6,
+      "playoff": 11.4,
       "projected_record": "5-9",
       "roster_id": 16,
       "team": "Missouri Tigers"
     },
     {
-      "bye": 4.0,
-      "championship": 2.0,
-      "division": 4.0,
-      "final": 4.0,
-      "playoff": 12.1,
-      "projected_record": "4-10",
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.6,
+      "playoff": 10.7,
+      "projected_record": "3-11",
       "roster_id": 8,
       "team": "Kentucky Wildcats"
     },
     {
-      "bye": 4.0,
-      "championship": 2.0,
-      "division": 4.0,
-      "final": 4.0,
-      "playoff": 12.1,
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.6,
+      "playoff": 10.7,
       "projected_record": "3-11",
       "roster_id": 3,
       "team": "Vanderbilt"
     },
     {
-      "bye": 4.0,
-      "championship": 2.0,
-      "division": 4.0,
-      "final": 4.0,
-      "playoff": 12.1,
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 3.6,
+      "final": 3.6,
+      "playoff": 10.7,
       "projected_record": "2-12",
       "roster_id": 1,
       "team": "South Carolina Gamecocks"
@@ -571,15 +571,15 @@
   "publication_assets": {
     "playoff_forecast": {
       "filename": "saturday_standard-playoff-forecast.png",
-      "generated_at": "2026-10-13T20:38:27.098177+00:00",
+      "generated_at": "2026-10-20T19:09:48.481429+00:00",
       "media_type": "image/png",
-      "sha256": "617c25df9a115b9a708e40eb48fd62a6156fe03a2537a6c9195a736da29af180"
+      "sha256": "272289b8a0c2359e15aa059f58058b9288352e3c40c2664d6bdbad48a0ec3e7c"
     },
     "power_rankings": {
       "filename": "saturday_standard-power-rankings.png",
-      "generated_at": "2026-10-13T20:38:27.098177+00:00",
+      "generated_at": "2026-10-20T19:09:48.481429+00:00",
       "media_type": "image/png",
-      "sha256": "01ebaacfbdc082f793615777477766a5c686bb7cd0e7513783d93764d937b5e8"
+      "sha256": "693e615216f858f493d1af2efcf0349940841ea90ebfe615f209fad8eae0d548"
     }
   },
   "publication_key": "saturday_standard",
@@ -591,7 +591,7 @@
       "DynastyProcess",
       "DynastySuperflex"
     ],
-    "generated_at": "2026-10-13T20:38:27.098177+00:00",
+    "generated_at": "2026-10-20T19:09:48.481429+00:00",
     "league_id": "1341161857683058688",
     "league_key": "sec",
     "lineup_sources": [
@@ -599,8 +599,8 @@
     ],
     "model_version": "cross-league-record-v2",
     "producer": "OTHER_LEAGUE_POWER_RANKS",
-    "ranking_week": 6,
-    "results_through_week": 5,
+    "ranking_week": 7,
+    "results_through_week": 6,
     "season": 2026
   }
 }

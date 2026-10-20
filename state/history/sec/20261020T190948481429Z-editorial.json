@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-10-20T19:09:48.481429+00:00",
+  "league_id": "1341161857683058688",
+  "post_key": "2026-week-6",
+  "previous_rank_by_roster_id": {
+    "1": 16,
+    "10": 7,
+    "11": 6,
+    "12": 10,
+    "13": 1,
+    "14": 11,
+    "15": 4,
+    "16": 13,
+    "2": 5,
+    "3": 15,
+    "4": 8,
+    "5": 2,
+    "6": 3,
+    "7": 12,
+    "8": 14,
+    "9": 9
+  },
+  "publication": "editorial",
+  "rank_by_roster_id": {
+    "1": 16,
+    "10": 7,
+    "11": 5,
+    "12": 8,
+    "13": 1,
+    "14": 9,
+    "15": 6,
+    "16": 13,
+    "2": 4,
+    "3": 15,
+    "4": 11,
+    "5": 2,
+    "6": 3,
+    "7": 12,
+    "8": 14,
+    "9": 10
+  },
+  "ranking_week": 7,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 13,
+      "score": 96.7,
+      "team": "Mississippi State"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 5,
+      "score": 82.9,
+      "team": "Georgia Bulldogs"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 3,
+      "rank": 3,
+      "roster_id": 6,
+      "score": 77.6,
+      "team": "Tennessee Volunteers"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 5,
+      "rank": 4,
+      "roster_id": 2,
+      "score": 76.5,
+      "team": "Florida Gators"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 6,
+      "rank": 5,
+      "roster_id": 11,
+      "score": 68.1,
+      "team": "Ole Miss Rebels"
+    },
+    {
+      "movement": -2,
+      "previous_rank": 4,
+      "rank": 6,
+      "roster_id": 15,
+      "score": 67.1,
+      "team": "Alabama Crimson Tide"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 7,
+      "rank": 7,
+      "roster_id": 10,
+      "score": 53.4,
+      "team": "Auburn Tigers"
+    },
+    {
+      "movement": 2,
+      "previous_rank": 10,
+      "rank": 8,
+      "roster_id": 12,
+      "score": 47.6,
+      "team": "Oklahoma Sooners"
+    },
+    {
+      "movement": 2,
+      "previous_rank": 11,
+      "rank": 9,
+      "roster_id": 14,
+      "score": 46.5,
+      "team": "Arkansas Razorbacks"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 9,
+      "rank": 10,
+      "roster_id": 9,
+      "score": 43.5,
+      "team": "Texas A&M"
+    },
+    {
+      "movement": -3,
+      "previous_rank": 8,
+      "rank": 11,
+      "roster_id": 4,
+      "score": 42.7,
+      "team": "Lousiana State University"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 12,
+      "rank": 12,
+      "roster_id": 7,
+      "score": 30.9,
+      "team": "Texas Longhorns"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 13,
+      "rank": 13,
+      "roster_id": 16,
+      "score": 24.3,
+      "team": "Missouri Tigers"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 14,
+      "rank": 14,
+      "roster_id": 8,
+      "score": 18.9,
+      "team": "Kentucky Wildcats"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 15,
+      "rank": 15,
+      "roster_id": 3,
+      "score": 11.7,
+      "team": "Vanderbilt"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 16,
+      "rank": 16,
+      "roster_id": 1,
+      "score": 11.7,
+      "team": "South Carolina Gamecocks"
+    }
+  ]
+}
