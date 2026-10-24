@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-10-24T17:43:03.706327+00:00",
+  "league_id": "1391793948728492032",
+  "post_key": "2026-week-7",
+  "previous_rank_by_roster_id": {
+    "1": 2,
+    "10": 6,
+    "2": 5,
+    "3": 10,
+    "4": 4,
+    "5": 7,
+    "6": 1,
+    "7": 3,
+    "8": 9,
+    "9": 8
+  },
+  "publication": "discord",
+  "rank_by_roster_id": {
+    "1": 2,
+    "10": 6,
+    "2": 4,
+    "3": 9,
+    "4": 5,
+    "5": 7,
+    "6": 1,
+    "7": 3,
+    "8": 10,
+    "9": 8
+  },
+  "ranking_week": 7,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 6,
+      "score": 94.3,
+      "team": "Njigbas in Paris"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 1,
+      "score": 81.6,
+      "team": "Gibbs Me Head"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 3,
+      "rank": 3,
+      "roster_id": 7,
+      "score": 81.2,
+      "team": "Inches matter"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 5,
+      "rank": 4,
+      "roster_id": 2,
+      "score": 64.8,
+      "team": "The Garrett Gatsby"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 4,
+      "rank": 5,
+      "roster_id": 4,
+      "score": 61.6,
+      "team": "Stribling my lovehand"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 6,
+      "rank": 6,
+      "roster_id": 10,
+      "score": 37.2,
+      "team": "Parade of Horribles"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 7,
+      "rank": 7,
+      "roster_id": 5,
+      "score": 26.4,
+      "team": "The chase show"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 8,
+      "rank": 8,
+      "roster_id": 9,
+      "score": 19.1,
+      "team": "Delta Stream"
+    },
+    {
+      "movement": 1,
+      "previous_rank": 10,
+      "rank": 9,
+      "roster_id": 3,
+      "score": 17.4,
+      "team": "Unsolicited Nix Pics"
+    },
+    {
+      "movement": -1,
+      "previous_rank": 9,
+      "rank": 10,
+      "roster_id": 8,
+      "score": 16.5,
+      "team": "GT397"
+    }
+  ]
+}
