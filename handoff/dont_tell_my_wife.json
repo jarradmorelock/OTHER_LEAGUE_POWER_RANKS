@@ -13,21 +13,21 @@
         "market_points": 7.95,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 90.9,
-        "ros_scoring_points": 14.2,
+        "ros_scoring_points": 11.36,
         "season_results_percentile": 100.0,
-        "season_results_points": 71.88,
+        "season_results_points": 75.0,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 1,
       "rank": 1,
       "roster_id": 8,
-      "score": 94.0,
+      "score": 94.3,
       "team": "Groningen Schatzi\u2019s"
     },
     {
@@ -38,46 +38,46 @@
         "market_points": 6.82,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 100.0,
-        "ros_scoring_points": 15.62,
-        "season_results_percentile": 87.5,
-        "season_results_points": 62.89,
+        "ros_scoring_points": 12.5,
+        "season_results_percentile": 84.1,
+        "season_results_points": 63.07,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 2,
       "rank": 2,
       "roster_id": 7,
-      "score": 85.3,
+      "score": 82.4,
       "team": "Flo Memorial Babes"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 52.3,
-        "market_points": 6.53,
+        "market_percentile": 54.5,
+        "market_points": 6.82,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 81.8,
-        "ros_scoring_points": 12.78,
-        "season_results_percentile": 68.2,
-        "season_results_points": 49.01,
+        "ros_scoring_points": 10.23,
+        "season_results_percentile": 81.8,
+        "season_results_points": 61.36,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
-      "movement": 2,
-      "previous_rank": 5,
+      "movement": 0,
+      "previous_rank": 3,
       "rank": 3,
       "roster_id": 1,
-      "score": 68.3,
+      "score": 78.4,
       "team": "Rex Memorial Cowboys"
     },
     {
@@ -88,22 +88,47 @@
         "market_points": 7.1,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 18.2,
-        "ros_scoring_points": 2.84,
-        "season_results_percentile": 69.3,
-        "season_results_points": 49.82,
+        "ros_scoring_points": 2.27,
+        "season_results_percentile": 65.9,
+        "season_results_points": 49.43,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 4,
       "rank": 4,
       "roster_id": 3,
-      "score": 59.8,
+      "score": 58.8,
       "team": "Groton Naval Bruhs"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 36.4,
+        "market_points": 4.55,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 72.7,
+        "ros_scoring_points": 9.09,
+        "season_results_percentile": 55.7,
+        "season_results_points": 41.76,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.125,
+          "season_results": 0.75
+        }
+      },
+      "movement": 2,
+      "previous_rank": 7,
+      "rank": 5,
+      "roster_id": 4,
+      "score": 55.4,
+      "team": "Bradford Jellybeans"
     },
     {
       "components": {
@@ -112,148 +137,23 @@
         "market_percentile": 31.8,
         "market_points": 3.98,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 63.6,
-        "ros_scoring_points": 9.94,
-        "season_results_percentile": 61.4,
-        "season_results_points": 44.11,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
-        }
-      },
-      "movement": -2,
-      "previous_rank": 3,
-      "rank": 5,
-      "roster_id": 6,
-      "score": 58.0,
-      "team": "The #1 Loser"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 38.6,
-        "market_points": 4.83,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 36.4,
-        "ros_scoring_points": 5.68,
-        "season_results_percentile": 59.1,
-        "season_results_points": 42.47,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
-        }
-      },
-      "movement": 3,
-      "previous_rank": 9,
-      "rank": 6,
-      "roster_id": 9,
-      "score": 53.0,
-      "team": "Woodland38"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 38.6,
-        "market_points": 4.83,
-        "record_guardrail_applied": false,
         "ros_scoring_percentile": 54.5,
-        "ros_scoring_points": 8.52,
-        "season_results_percentile": 45.5,
-        "season_results_points": 32.67,
+        "ros_scoring_points": 6.82,
+        "season_results_percentile": 51.1,
+        "season_results_points": 38.35,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
-        }
-      },
-      "movement": 1,
-      "previous_rank": 8,
-      "rank": 7,
-      "roster_id": 4,
-      "score": 46.0,
-      "team": "Bradford Jellybeans"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 70.5,
-        "market_points": 8.81,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 72.7,
-        "ros_scoring_points": 11.36,
-        "season_results_percentile": 29.5,
-        "season_results_points": 21.24,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": -1,
-      "previous_rank": 7,
-      "rank": 8,
-      "roster_id": 11,
-      "score": 41.4,
-      "team": "Waukesha Memorial Honeys"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 68.2,
-        "market_points": 8.52,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 27.3,
-        "ros_scoring_points": 4.26,
-        "season_results_percentile": 34.1,
-        "season_results_points": 24.5,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
-        }
-      },
-      "movement": -3,
-      "previous_rank": 6,
-      "rank": 9,
-      "roster_id": 2,
-      "score": 37.3,
-      "team": "Holston Valley Valentines"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 38.6,
-        "market_points": 4.83,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 9.1,
-        "ros_scoring_points": 1.42,
-        "season_results_percentile": 36.4,
-        "season_results_points": 26.14,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
-        }
-      },
-      "movement": 0,
-      "previous_rank": 10,
-      "rank": 10,
-      "roster_id": 12,
-      "score": 32.4,
-      "team": "Newport Highlanders"
+      "previous_rank": 5,
+      "rank": 6,
+      "roster_id": 6,
+      "score": 49.1,
+      "team": "The #1 Loser"
     },
     {
       "components": {
@@ -262,22 +162,122 @@
         "market_percentile": 40.9,
         "market_points": 5.11,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 45.5,
-        "ros_scoring_points": 7.1,
-        "season_results_percentile": 5.7,
-        "season_results_points": 4.08,
+        "ros_scoring_percentile": 36.4,
+        "ros_scoring_points": 4.55,
+        "season_results_percentile": 48.9,
+        "season_results_points": 36.65,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
+        }
+      },
+      "movement": -1,
+      "previous_rank": 6,
+      "rank": 7,
+      "roster_id": 9,
+      "score": 46.3,
+      "team": "Woodland38"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 68.2,
+        "market_points": 8.52,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 63.6,
+        "ros_scoring_points": 7.95,
+        "season_results_percentile": 33.0,
+        "season_results_points": 24.72,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.125,
+          "season_results": 0.75
+        }
+      },
+      "movement": 0,
+      "previous_rank": 8,
+      "rank": 8,
+      "roster_id": 11,
+      "score": 41.2,
+      "team": "Waukesha Memorial Honeys"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 34.1,
+        "market_points": 4.26,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 9.1,
+        "ros_scoring_points": 1.14,
+        "season_results_percentile": 44.3,
+        "season_results_points": 33.24,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.125,
+          "season_results": 0.75
+        }
+      },
+      "movement": 1,
+      "previous_rank": 10,
+      "rank": 9,
+      "roster_id": 12,
+      "score": 38.6,
+      "team": "Newport Highlanders"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 65.9,
+        "market_points": 8.24,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 27.3,
+        "ros_scoring_points": 3.41,
+        "season_results_percentile": 26.1,
+        "season_results_points": 19.6,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.125,
+          "season_results": 0.75
+        }
+      },
+      "movement": -1,
+      "previous_rank": 9,
+      "rank": 10,
+      "roster_id": 2,
+      "score": 31.2,
+      "team": "Holston Valley Valentines"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 47.7,
+        "market_points": 5.97,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 45.5,
+        "ros_scoring_points": 5.68,
+        "season_results_percentile": 9.1,
+        "season_results_points": 6.82,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.125,
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 11,
       "rank": 11,
       "roster_id": 5,
-      "score": 16.3,
+      "score": 18.5,
       "team": "Los Alamitos Nerds"
     },
     {
@@ -289,140 +289,140 @@
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 0.0,
         "ros_scoring_points": 0.0,
-        "season_results_percentile": 3.4,
-        "season_results_points": 2.45,
+        "season_results_percentile": 0.0,
+        "season_results_points": 0.0,
         "weights": {
           "defense": 0.0,
           "market": 0.125,
-          "ros_scoring": 0.15625,
-          "season_results": 0.71875
+          "ros_scoring": 0.125,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 12,
       "rank": 12,
       "roster_id": 10,
-      "score": 8.1,
+      "score": 5.7,
       "team": "Good Samaritan Senbeis"
     }
   ],
   "playoff_odds": [
     {
-      "bye": 78.5,
-      "championship": 20.3,
+      "bye": 82.0,
+      "championship": 23.4,
       "division": 0.0,
-      "final": 35.5,
-      "playoff": 87.5,
+      "final": 41.2,
+      "playoff": 89.3,
       "projected_record": "12-2",
       "roster_id": 8,
       "team": "Groningen Schatzi\u2019s"
     },
     {
-      "bye": 68.4,
-      "championship": 32.6,
+      "bye": 57.1,
+      "championship": 29.1,
       "division": 0.0,
-      "final": 48.5,
-      "playoff": 87.4,
-      "projected_record": "10-4",
+      "final": 46.0,
+      "playoff": 88.7,
+      "projected_record": "9-5",
       "roster_id": 7,
       "team": "Flo Memorial Babes"
     },
     {
-      "bye": 11.6,
-      "championship": 14.9,
+      "bye": 24.3,
+      "championship": 16.2,
       "division": 0.0,
-      "final": 34.1,
-      "playoff": 83.9,
+      "final": 35.3,
+      "playoff": 87.9,
       "projected_record": "9-5",
       "roster_id": 1,
       "team": "Rex Memorial Cowboys"
     },
     {
-      "bye": 5.2,
-      "championship": 3.0,
+      "bye": 4.4,
+      "championship": 2.5,
       "division": 0.0,
-      "final": 9.3,
-      "playoff": 54.1,
+      "final": 6.8,
+      "playoff": 42.3,
       "projected_record": "7-7",
       "roster_id": 3,
       "team": "Groton Naval Bruhs"
     },
     {
-      "bye": 6.3,
-      "championship": 7.3,
+      "bye": 5.6,
+      "championship": 7.9,
       "division": 0.0,
-      "final": 19.3,
-      "playoff": 75.2,
-      "projected_record": "8-6",
-      "roster_id": 6,
-      "team": "The #1 Loser"
-    },
-    {
-      "bye": 4.5,
-      "championship": 2.9,
-      "division": 0.0,
-      "final": 8.0,
-      "playoff": 41.8,
-      "projected_record": "7-7",
-      "roster_id": 9,
-      "team": "Woodland38"
-    },
-    {
-      "bye": 4.5,
-      "championship": 5.1,
-      "division": 0.0,
-      "final": 13.4,
-      "playoff": 50.8,
+      "final": 19.8,
+      "playoff": 72.7,
       "projected_record": "7-7",
       "roster_id": 4,
       "team": "Bradford Jellybeans"
     },
     {
-      "bye": 4.2,
-      "championship": 4.4,
+      "bye": 4.7,
+      "championship": 6.0,
       "division": 0.0,
-      "final": 11.1,
-      "playoff": 39.7,
+      "final": 15.6,
+      "playoff": 65.3,
+      "projected_record": "7-7",
+      "roster_id": 6,
+      "team": "The #1 Loser"
+    },
+    {
+      "bye": 3.8,
+      "championship": 2.5,
+      "division": 0.0,
+      "final": 6.2,
+      "playoff": 34.5,
+      "projected_record": "6-8",
+      "roster_id": 9,
+      "team": "Woodland38"
+    },
+    {
+      "bye": 3.7,
+      "championship": 4.6,
+      "division": 0.0,
+      "final": 11.4,
+      "playoff": 44.5,
       "projected_record": "6-8",
       "roster_id": 11,
       "team": "Waukesha Memorial Honeys"
     },
     {
-      "bye": 4.3,
-      "championship": 2.7,
+      "bye": 3.6,
+      "championship": 1.8,
       "division": 0.0,
-      "final": 7.2,
-      "playoff": 34.5,
+      "final": 4.3,
+      "playoff": 22.1,
+      "projected_record": "6-8",
+      "roster_id": 12,
+      "team": "Newport Highlanders"
+    },
+    {
+      "bye": 3.6,
+      "championship": 2.2,
+      "division": 0.0,
+      "final": 5.2,
+      "playoff": 25.5,
       "projected_record": "6-8",
       "roster_id": 2,
       "team": "Holston Valley Valentines"
     },
     {
-      "bye": 4.2,
-      "championship": 2.1,
+      "bye": 3.6,
+      "championship": 2.0,
       "division": 0.0,
       "final": 4.6,
-      "playoff": 16.2,
-      "projected_record": "5-9",
-      "roster_id": 12,
-      "team": "Newport Highlanders"
-    },
-    {
-      "bye": 4.2,
-      "championship": 2.4,
-      "division": 0.0,
-      "final": 5.0,
-      "playoff": 16.2,
+      "playoff": 16.4,
       "projected_record": "5-9",
       "roster_id": 5,
       "team": "Los Alamitos Nerds"
     },
     {
-      "bye": 4.2,
-      "championship": 2.1,
+      "bye": 3.6,
+      "championship": 1.8,
       "division": 0.0,
-      "final": 4.2,
-      "playoff": 12.5,
+      "final": 3.6,
+      "playoff": 10.7,
       "projected_record": "3-11",
       "roster_id": 10,
       "team": "Good Samaritan Senbeis"
@@ -431,15 +431,15 @@
   "publication_assets": {
     "playoff_forecast": {
       "filename": "dont_tell_my_wife-playoff-forecast.png",
-      "generated_at": "2026-10-27T20:00:46.489265+00:00",
+      "generated_at": "2026-11-03T21:41:47.191670+00:00",
       "media_type": "image/png",
-      "sha256": "35a36e1b6b19d9b559ef758ce34f3c31f00388bb67166071810b3bb12e2dcb7f"
+      "sha256": "ef01cf6b7ba73d3021fa24f4eebeb30cd0aa781a2a75f06d2cc4632942180dc2"
     },
     "power_rankings": {
       "filename": "dont_tell_my_wife-power-rankings.png",
-      "generated_at": "2026-10-27T20:00:46.489265+00:00",
+      "generated_at": "2026-11-03T21:41:47.191670+00:00",
       "media_type": "image/png",
-      "sha256": "1a660623690e8252ca2813da3340c3709d30ca0eae14e488f59785485d955d7e"
+      "sha256": "29d71585a6223b322fc95ef2006b177f80b1f7fd0fac914997b53bf11831adb1"
     }
   },
   "publication_key": "dont_tell_my_wife",
@@ -451,7 +451,7 @@
       "DynastyProcess",
       "DynastySuperflex"
     ],
-    "generated_at": "2026-10-27T20:00:46.489265+00:00",
+    "generated_at": "2026-11-03T21:41:47.191670+00:00",
     "league_id": "1341970851624402944",
     "league_key": "dont_tell_my_wife",
     "lineup_sources": [
@@ -459,8 +459,8 @@
     ],
     "model_version": "cross-league-record-v2",
     "producer": "OTHER_LEAGUE_POWER_RANKS",
-    "ranking_week": 8,
-    "results_through_week": 7,
+    "ranking_week": 9,
+    "results_through_week": 8,
     "season": 2026
   }
 }

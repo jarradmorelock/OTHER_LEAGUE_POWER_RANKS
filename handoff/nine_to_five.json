@@ -9,51 +9,26 @@
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 94.4,
+        "market_percentile": 88.9,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 88.9,
-        "ros_scoring_points": 25.0,
-        "season_results_percentile": 100.0,
-        "season_results_points": 71.88,
+        "ros_scoring_percentile": 66.7,
+        "ros_scoring_points": 16.67,
+        "season_results_percentile": 97.2,
+        "season_results_points": 72.92,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 1,
       "rank": 1,
       "roster_id": 1,
-      "score": 96.9,
+      "score": 89.6,
       "team": "Wookie of the Year"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 19.4,
-        "market_points": 0.0,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 66.7,
-        "ros_scoring_points": 18.75,
-        "season_results_percentile": 86.1,
-        "season_results_points": 61.89,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
-        }
-      },
-      "movement": 1,
-      "previous_rank": 3,
-      "rank": 2,
-      "roster_id": 8,
-      "score": 80.6,
-      "team": "Turd Ferguson"
     },
     {
       "components": {
@@ -62,97 +37,122 @@
         "market_percentile": 66.7,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 77.8,
-        "ros_scoring_points": 21.88,
-        "season_results_percentile": 76.4,
-        "season_results_points": 54.9,
+        "ros_scoring_percentile": 88.9,
+        "ros_scoring_points": 22.22,
+        "season_results_percentile": 79.2,
+        "season_results_points": 59.37,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
-      "movement": -1,
-      "previous_rank": 2,
-      "rank": 3,
+      "movement": 1,
+      "previous_rank": 3,
+      "rank": 2,
       "roster_id": 3,
-      "score": 76.8,
+      "score": 81.6,
       "team": "Ope I Did it Again"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 22.2,
+        "market_percentile": 19.4,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 55.6,
-        "ros_scoring_points": 15.62,
-        "season_results_percentile": 70.8,
-        "season_results_points": 50.91,
+        "ros_scoring_points": 13.89,
+        "season_results_percentile": 83.3,
+        "season_results_points": 62.5,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
+        }
+      },
+      "movement": -1,
+      "previous_rank": 2,
+      "rank": 3,
+      "roster_id": 8,
+      "score": 76.4,
+      "team": "Turd Ferguson"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 25.0,
+        "market_points": 0.0,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 44.4,
+        "ros_scoring_points": 11.11,
+        "season_results_percentile": 73.6,
+        "season_results_points": 55.21,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.0,
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 4,
       "rank": 4,
       "roster_id": 4,
-      "score": 66.5,
+      "score": 66.3,
       "team": "Rhinestone Cowboy"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 50.0,
+        "market_percentile": 38.9,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 100.0,
-        "ros_scoring_points": 28.12,
-        "season_results_percentile": 45.8,
-        "season_results_points": 32.94,
+        "ros_scoring_points": 25.0,
+        "season_results_percentile": 41.7,
+        "season_results_points": 31.25,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 5,
       "rank": 5,
       "roster_id": 2,
-      "score": 61.1,
+      "score": 56.2,
       "team": "Thats what cheese said"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 83.3,
+        "market_percentile": 88.9,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 22.2,
-        "ros_scoring_points": 6.25,
-        "season_results_percentile": 51.4,
-        "season_results_points": 36.94,
+        "ros_scoring_points": 5.56,
+        "season_results_percentile": 55.6,
+        "season_results_points": 41.67,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
-      "movement": 2,
-      "previous_rank": 8,
+      "movement": 0,
+      "previous_rank": 6,
       "rank": 6,
       "roster_id": 10,
-      "score": 43.2,
+      "score": 47.2,
       "team": "tec3984740"
     },
     {
@@ -162,48 +162,23 @@
         "market_percentile": 33.3,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 44.4,
-        "ros_scoring_points": 12.5,
-        "season_results_percentile": 31.9,
-        "season_results_points": 22.96,
+        "ros_scoring_percentile": 77.8,
+        "ros_scoring_points": 19.44,
+        "season_results_percentile": 27.8,
+        "season_results_points": 20.83,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
-      "movement": -1,
-      "previous_rank": 6,
+      "movement": 0,
+      "previous_rank": 7,
       "rank": 7,
       "roster_id": 5,
-      "score": 35.5,
+      "score": 40.3,
       "team": "BestLilfantasyTeamInTX"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 36.1,
-        "market_points": 0.0,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 11.1,
-        "ros_scoring_points": 3.12,
-        "season_results_percentile": 23.6,
-        "season_results_points": 16.97,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
-        }
-      },
-      "movement": -1,
-      "previous_rank": 7,
-      "rank": 8,
-      "roster_id": 6,
-      "score": 20.1,
-      "team": "Steel Magnolias"
     },
     {
       "components": {
@@ -213,146 +188,171 @@
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 33.3,
-        "ros_scoring_points": 9.37,
-        "season_results_percentile": 9.7,
-        "season_results_points": 6.99,
+        "ros_scoring_points": 8.33,
+        "season_results_percentile": 22.2,
+        "season_results_points": 16.67,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
-      "movement": 0,
+      "movement": 1,
       "previous_rank": 9,
-      "rank": 9,
+      "rank": 8,
       "roster_id": 9,
-      "score": 16.4,
+      "score": 25.0,
       "team": "ShawnCarter81"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 5.6,
+        "market_percentile": 41.7,
+        "market_points": 0.0,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 11.1,
+        "ros_scoring_points": 2.78,
+        "season_results_percentile": 19.4,
+        "season_results_points": 14.58,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.0,
+          "ros_scoring": 0.25,
+          "season_results": 0.75
+        }
+      },
+      "movement": -1,
+      "previous_rank": 8,
+      "rank": 9,
+      "roster_id": 6,
+      "score": 17.4,
+      "team": "Steel Magnolias"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 8.3,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 0.0,
         "ros_scoring_points": 0.0,
-        "season_results_percentile": 4.2,
-        "season_results_points": 2.99,
+        "season_results_percentile": 0.0,
+        "season_results_points": 0.0,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
-          "ros_scoring": 0.28125,
-          "season_results": 0.71875
+          "ros_scoring": 0.25,
+          "season_results": 0.75
         }
       },
       "movement": 0,
       "previous_rank": 10,
       "rank": 10,
       "roster_id": 7,
-      "score": 3.0,
+      "score": 0.0,
       "team": "De'Vont Stop Believin"
     }
   ],
   "playoff_odds": [
     {
-      "bye": 82.1,
-      "championship": 22.8,
+      "bye": 82.6,
+      "championship": 18.7,
       "division": 0.0,
-      "final": 44.1,
-      "playoff": 87.5,
+      "final": 40.1,
+      "playoff": 89.3,
       "projected_record": "14-0",
       "roster_id": 1,
       "team": "Wookie of the Year"
     },
     {
-      "bye": 71.4,
-      "championship": 17.4,
+      "bye": 76.7,
+      "championship": 30.0,
       "division": 0.0,
-      "final": 37.6,
-      "playoff": 87.5,
-      "projected_record": "14-0",
-      "roster_id": 8,
-      "team": "Turd Ferguson"
-    },
-    {
-      "bye": 61.9,
-      "championship": 20.5,
-      "division": 0.0,
-      "final": 38.8,
-      "playoff": 87.4,
+      "final": 49.9,
+      "playoff": 89.3,
       "projected_record": "14-0",
       "roster_id": 3,
       "team": "Ope I Did it Again"
     },
     {
-      "bye": 37.4,
-      "championship": 13.7,
+      "bye": 77.2,
+      "championship": 16.0,
       "division": 0.0,
-      "final": 28.7,
-      "playoff": 87.2,
-      "projected_record": "13-1",
+      "final": 37.4,
+      "playoff": 89.3,
+      "projected_record": "14-0",
+      "roster_id": 8,
+      "team": "Turd Ferguson"
+    },
+    {
+      "bye": 24.8,
+      "championship": 10.9,
+      "division": 0.0,
+      "final": 24.6,
+      "playoff": 88.7,
+      "projected_record": "14-0",
       "roster_id": 4,
       "team": "Rhinestone Cowboy"
     },
     {
-      "bye": 9.6,
-      "championship": 12.5,
+      "bye": 6.4,
+      "championship": 9.8,
       "division": 0.0,
-      "final": 24.2,
-      "playoff": 77.3,
-      "projected_record": "11-3",
+      "final": 17.0,
+      "playoff": 43.4,
+      "projected_record": "10-4",
       "roster_id": 2,
       "team": "Thats what cheese said"
     },
     {
-      "bye": 7.5,
-      "championship": 2.5,
+      "bye": 6.6,
+      "championship": 5.7,
       "division": 0.0,
-      "final": 5.3,
-      "playoff": 16.3,
-      "projected_record": "9-5",
+      "final": 13.1,
+      "playoff": 54.6,
+      "projected_record": "11-3",
       "roster_id": 10,
       "team": "tec3984740"
     },
     {
-      "bye": 7.5,
-      "championship": 3.1,
+      "bye": 6.4,
+      "championship": 2.4,
       "division": 0.0,
-      "final": 6.3,
-      "playoff": 18.8,
-      "projected_record": "9-5",
+      "final": 4.8,
+      "playoff": 12.5,
+      "projected_record": "8-6",
       "roster_id": 5,
       "team": "BestLilfantasyTeamInTX"
     },
     {
-      "bye": 7.5,
-      "championship": 2.5,
+      "bye": 6.4,
+      "championship": 2.2,
       "division": 0.0,
-      "final": 5.0,
-      "playoff": 12.6,
-      "projected_record": "7-7",
-      "roster_id": 6,
-      "team": "Steel Magnolias"
-    },
-    {
-      "bye": 7.5,
-      "championship": 2.5,
-      "division": 0.0,
-      "final": 5.0,
-      "playoff": 12.8,
-      "projected_record": "7-7",
+      "final": 4.5,
+      "playoff": 11.6,
+      "projected_record": "8-6",
       "roster_id": 9,
       "team": "ShawnCarter81"
     },
     {
-      "bye": 7.5,
-      "championship": 2.5,
+      "bye": 6.4,
+      "championship": 2.1,
       "division": 0.0,
-      "final": 5.0,
-      "playoff": 12.5,
+      "final": 4.3,
+      "playoff": 10.7,
+      "projected_record": "6-8",
+      "roster_id": 6,
+      "team": "Steel Magnolias"
+    },
+    {
+      "bye": 6.4,
+      "championship": 2.1,
+      "division": 0.0,
+      "final": 4.3,
+      "playoff": 10.7,
       "projected_record": "5-9",
       "roster_id": 7,
       "team": "De'Vont Stop Believin"
@@ -361,15 +361,15 @@
   "publication_assets": {
     "playoff_forecast": {
       "filename": "the_stampede-playoff-forecast.png",
-      "generated_at": "2026-10-27T20:00:32.842936+00:00",
+      "generated_at": "2026-11-03T21:41:33.814029+00:00",
       "media_type": "image/png",
-      "sha256": "e25d73a8aa8e796a19a0d1b6f60a33fe750dc0a83d0e4e7f74f4a8f9f9faa366"
+      "sha256": "1e0db6589cdfddb14c21265a87dd8e2fe4665fbe6145bd5d67c3b12c3cfa49a9"
     },
     "power_rankings": {
       "filename": "the_stampede-power-rankings.png",
-      "generated_at": "2026-10-27T20:00:32.842936+00:00",
+      "generated_at": "2026-11-03T21:41:33.814029+00:00",
       "media_type": "image/png",
-      "sha256": "c8a2f050227004c3d11ba80c02920dee1488e2224b79c4d2b15d5a5c3318fa75"
+      "sha256": "c87dca5faaba9c1865c19581cac540385234ced8ccfeeb3c75e9a2d2bf9048e5"
     }
   },
   "publication_key": "the_stampede",
@@ -381,7 +381,7 @@
       "DynastyProcess",
       "DynastySuperflex"
     ],
-    "generated_at": "2026-10-27T20:00:32.842936+00:00",
+    "generated_at": "2026-11-03T21:41:33.814029+00:00",
     "league_id": "1314710193413554176",
     "league_key": "nine_to_five",
     "lineup_sources": [
@@ -389,8 +389,8 @@
     ],
     "model_version": "cross-league-record-v2",
     "producer": "OTHER_LEAGUE_POWER_RANKS",
-    "ranking_week": 8,
-    "results_through_week": 7,
+    "ranking_week": 9,
+    "results_through_week": 8,
     "season": 2026
   }
 }
