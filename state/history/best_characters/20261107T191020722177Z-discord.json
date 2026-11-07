@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-11-07T19:10:20.722177+00:00",
+  "league_id": "1333195168139968512",
+  "post_key": "2026-week-9",
+  "previous_rank_by_roster_id": {
+    "1": 3,
+    "10": 2,
+    "11": 14,
+    "12": 11,
+    "13": 1,
+    "14": 16,
+    "15": 4,
+    "16": 10,
+    "2": 9,
+    "3": 7,
+    "4": 12,
+    "5": 5,
+    "6": 15,
+    "7": 6,
+    "8": 8,
+    "9": 13
+  },
+  "publication": "discord",
+  "rank_by_roster_id": {
+    "1": 3,
+    "10": 2,
+    "11": 14,
+    "12": 11,
+    "13": 1,
+    "14": 16,
+    "15": 4,
+    "16": 10,
+    "2": 9,
+    "3": 7,
+    "4": 12,
+    "5": 5,
+    "6": 15,
+    "7": 6,
+    "8": 8,
+    "9": 13
+  },
+  "ranking_week": 9,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 13,
+      "score": 90.2,
+      "team": "Earl of Lemongrab"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 10,
+      "score": 87.9,
+      "team": "Captain Malcolm Reynolds"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 3,
+      "rank": 3,
+      "roster_id": 1,
+      "score": 79.6,
+      "team": "Creed Bratton"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 4,
+      "rank": 4,
+      "roster_id": 15,
+      "score": 73.5,
+      "team": "Planet Vegeta"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 5,
+      "rank": 5,
+      "roster_id": 5,
+      "score": 66.9,
+      "team": "Stay Puft Marshmallow Man"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 6,
+      "rank": 6,
+      "roster_id": 7,
+      "score": 60.2,
+      "team": "Dexter Morgan"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 7,
+      "rank": 7,
+      "roster_id": 3,
+      "score": 58.3,
+      "team": "The Doctor"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 8,
+      "rank": 8,
+      "roster_id": 8,
+      "score": 51.2,
+      "team": "Kenny Powers"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 9,
+      "rank": 9,
+      "roster_id": 2,
+      "score": 49.4,
+      "team": "JamisonT1994"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 10,
+      "rank": 10,
+      "roster_id": 16,
+      "score": 46.9,
+      "team": "Chiefbighill"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 11,
+      "rank": 11,
+      "roster_id": 12,
+      "score": 37.5,
+      "team": "Lord Farquaad"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 12,
+      "rank": 12,
+      "roster_id": 4,
+      "score": 31.2,
+      "team": "Roy\u2019sAngerManagementClass"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 13,
+      "rank": 13,
+      "roster_id": 9,
+      "score": 23.8,
+      "team": "Lt. Dan\u2019s Marching Band"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 14,
+      "rank": 14,
+      "roster_id": 11,
+      "score": 22.3,
+      "team": "Uncle Rico"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 15,
+      "rank": 15,
+      "roster_id": 6,
+      "score": 10.6,
+      "team": "Megamind"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 16,
+      "rank": 16,
+      "roster_id": 14,
+      "score": 10.4,
+      "team": "Shoresy"
+    }
+  ]
+}
