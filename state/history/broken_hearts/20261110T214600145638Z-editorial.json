@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-11-10T21:46:00.145638+00:00",
+  "league_id": "1391793948728492032",
+  "post_key": "2026-week-9",
+  "previous_rank_by_roster_id": {
+    "1": 3,
+    "10": 5,
+    "2": 4,
+    "3": 10,
+    "4": 6,
+    "5": 7,
+    "6": 1,
+    "7": 2,
+    "8": 8,
+    "9": 9
+  },
+  "publication": "editorial",
+  "rank_by_roster_id": {
+    "1": 3,
+    "10": 5,
+    "2": 4,
+    "3": 10,
+    "4": 6,
+    "5": 7,
+    "6": 1,
+    "7": 2,
+    "8": 8,
+    "9": 9
+  },
+  "ranking_week": 10,
+  "schema_version": 1,
+  "season": 2026,
+  "teams": [
+    {
+      "movement": 0,
+      "previous_rank": 1,
+      "rank": 1,
+      "roster_id": 6,
+      "score": 100.0,
+      "team": "Njigbas in Paris"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 2,
+      "rank": 2,
+      "roster_id": 7,
+      "score": 73.6,
+      "team": "Inches matter"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 3,
+      "rank": 3,
+      "roster_id": 1,
+      "score": 72.9,
+      "team": "Gibbs Me Head"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 4,
+      "rank": 4,
+      "roster_id": 2,
+      "score": 61.8,
+      "team": "The Garrett Gatsby"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 5,
+      "rank": 5,
+      "roster_id": 10,
+      "score": 60.4,
+      "team": "Parade of Horribles"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 6,
+      "rank": 6,
+      "roster_id": 4,
+      "score": 42.4,
+      "team": "Stribling my lovehand"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 7,
+      "rank": 7,
+      "roster_id": 5,
+      "score": 36.1,
+      "team": "The chase show"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 8,
+      "rank": 8,
+      "roster_id": 8,
+      "score": 22.2,
+      "team": "GT397"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 9,
+      "rank": 9,
+      "roster_id": 9,
+      "score": 22.2,
+      "team": "Delta Stream"
+    },
+    {
+      "movement": 0,
+      "previous_rank": 10,
+      "rank": 10,
+      "roster_id": 3,
+      "score": 8.3,
+      "team": "Unsolicited Nix Pics"
+    }
+  ]
+}

@@ -9,7 +9,7 @@
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 61.1,
+        "market_percentile": 72.2,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 100.0,
@@ -37,10 +37,10 @@
         "market_percentile": 30.6,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 88.9,
-        "ros_scoring_points": 22.22,
-        "season_results_percentile": 80.6,
-        "season_results_points": 60.42,
+        "ros_scoring_percentile": 77.8,
+        "ros_scoring_points": 19.44,
+        "season_results_percentile": 72.2,
+        "season_results_points": 54.17,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -48,11 +48,11 @@
           "season_results": 0.75
         }
       },
-      "movement": 1,
-      "previous_rank": 3,
+      "movement": 0,
+      "previous_rank": 2,
       "rank": 2,
       "roster_id": 7,
-      "score": 82.6,
+      "score": 73.6,
       "team": "Inches matter"
     },
     {
@@ -64,8 +64,8 @@
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 66.7,
         "ros_scoring_points": 16.67,
-        "season_results_percentile": 77.8,
-        "season_results_points": 58.33,
+        "season_results_percentile": 75.0,
+        "season_results_points": 56.25,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -73,11 +73,11 @@
           "season_results": 0.75
         }
       },
-      "movement": -1,
-      "previous_rank": 2,
+      "movement": 0,
+      "previous_rank": 3,
       "rank": 3,
       "roster_id": 1,
-      "score": 75.0,
+      "score": 72.9,
       "team": "Gibbs Me Head"
     },
     {
@@ -87,10 +87,10 @@
         "market_percentile": 100.0,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 77.8,
-        "ros_scoring_points": 19.44,
-        "season_results_percentile": 62.5,
-        "season_results_points": 46.88,
+        "ros_scoring_percentile": 88.9,
+        "ros_scoring_points": 22.22,
+        "season_results_percentile": 52.8,
+        "season_results_points": 39.58,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -98,24 +98,24 @@
           "season_results": 0.75
         }
       },
-      "movement": 2,
-      "previous_rank": 6,
+      "movement": 0,
+      "previous_rank": 4,
       "rank": 4,
       "roster_id": 2,
-      "score": 66.3,
+      "score": 61.8,
       "team": "The Garrett Gatsby"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 55.6,
+        "market_percentile": 50.0,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 44.4,
-        "ros_scoring_points": 11.11,
-        "season_results_percentile": 68.1,
-        "season_results_points": 51.04,
+        "ros_scoring_percentile": 0.0,
+        "ros_scoring_points": 0.0,
+        "season_results_percentile": 80.6,
+        "season_results_points": 60.42,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -127,33 +127,8 @@
       "previous_rank": 5,
       "rank": 5,
       "roster_id": 10,
-      "score": 62.2,
+      "score": 60.4,
       "team": "Parade of Horribles"
-    },
-    {
-      "components": {
-        "defense_percentile": 0.0,
-        "defense_points": 0.0,
-        "market_percentile": 55.6,
-        "market_points": 0.0,
-        "record_guardrail_applied": false,
-        "ros_scoring_percentile": 55.6,
-        "ros_scoring_points": 13.89,
-        "season_results_percentile": 34.7,
-        "season_results_points": 26.04,
-        "weights": {
-          "defense": 0.0,
-          "market": 0.0,
-          "ros_scoring": 0.25,
-          "season_results": 0.75
-        }
-      },
-      "movement": -2,
-      "previous_rank": 4,
-      "rank": 6,
-      "roster_id": 4,
-      "score": 39.9,
-      "team": "Stribling my lovehand"
     },
     {
       "components": {
@@ -162,10 +137,10 @@
         "market_percentile": 58.3,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 11.1,
-        "ros_scoring_points": 2.78,
-        "season_results_percentile": 40.3,
-        "season_results_points": 30.21,
+        "ros_scoring_percentile": 44.4,
+        "ros_scoring_points": 11.11,
+        "season_results_percentile": 41.7,
+        "season_results_points": 31.25,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -173,24 +148,24 @@
           "season_results": 0.75
         }
       },
-      "movement": 1,
-      "previous_rank": 8,
-      "rank": 7,
-      "roster_id": 5,
-      "score": 33.0,
-      "team": "The chase show"
+      "movement": 0,
+      "previous_rank": 6,
+      "rank": 6,
+      "roster_id": 4,
+      "score": 42.4,
+      "team": "Stribling my lovehand"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 0.0,
+        "market_percentile": 69.4,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 0.0,
-        "ros_scoring_points": 0.0,
-        "season_results_percentile": 25.0,
-        "season_results_points": 18.75,
+        "ros_scoring_percentile": 11.1,
+        "ros_scoring_points": 2.78,
+        "season_results_percentile": 44.4,
+        "season_results_points": 33.33,
         "weights": {
           "defense": 0.0,
           "market": 0.0,
@@ -198,12 +173,12 @@
           "season_results": 0.75
         }
       },
-      "movement": -1,
+      "movement": 0,
       "previous_rank": 7,
-      "rank": 8,
-      "roster_id": 9,
-      "score": 18.7,
-      "team": "Delta Stream"
+      "rank": 7,
+      "roster_id": 5,
+      "score": 36.1,
+      "team": "The chase show"
     },
     {
       "components": {
@@ -212,8 +187,8 @@
         "market_percentile": 11.1,
         "market_points": 0.0,
         "record_guardrail_applied": false,
-        "ros_scoring_percentile": 33.3,
-        "ros_scoring_points": 8.33,
+        "ros_scoring_percentile": 55.6,
+        "ros_scoring_points": 13.89,
         "season_results_percentile": 11.1,
         "season_results_points": 8.33,
         "weights": {
@@ -224,21 +199,46 @@
         }
       },
       "movement": 0,
-      "previous_rank": 9,
-      "rank": 9,
+      "previous_rank": 8,
+      "rank": 8,
       "roster_id": 8,
-      "score": 16.7,
+      "score": 22.2,
       "team": "GT397"
     },
     {
       "components": {
         "defense_percentile": 0.0,
         "defense_points": 0.0,
-        "market_percentile": 63.9,
+        "market_percentile": 0.0,
         "market_points": 0.0,
         "record_guardrail_applied": false,
         "ros_scoring_percentile": 22.2,
         "ros_scoring_points": 5.56,
+        "season_results_percentile": 22.2,
+        "season_results_points": 16.67,
+        "weights": {
+          "defense": 0.0,
+          "market": 0.0,
+          "ros_scoring": 0.25,
+          "season_results": 0.75
+        }
+      },
+      "movement": 0,
+      "previous_rank": 9,
+      "rank": 9,
+      "roster_id": 9,
+      "score": 22.2,
+      "team": "Delta Stream"
+    },
+    {
+      "components": {
+        "defense_percentile": 0.0,
+        "defense_points": 0.0,
+        "market_percentile": 44.4,
+        "market_points": 0.0,
+        "record_guardrail_applied": false,
+        "ros_scoring_percentile": 33.3,
+        "ros_scoring_points": 8.33,
         "season_results_percentile": 0.0,
         "season_results_points": 0.0,
         "weights": {
@@ -252,107 +252,107 @@
       "previous_rank": 10,
       "rank": 10,
       "roster_id": 3,
-      "score": 5.6,
+      "score": 8.3,
       "team": "Unsolicited Nix Pics"
     }
   ],
   "playoff_odds": [
     {
-      "bye": 82.8,
-      "championship": 32.8,
+      "bye": 85.7,
+      "championship": 34.1,
       "division": 0.0,
-      "final": 50.7,
-      "playoff": 91.4,
+      "final": 53.5,
+      "playoff": 92.9,
       "projected_record": "14-0",
       "roster_id": 6,
       "team": "Njigbas in Paris"
     },
     {
-      "bye": 68.0,
-      "championship": 19.6,
+      "bye": 45.0,
+      "championship": 16.5,
       "division": 0.0,
-      "final": 36.0,
-      "playoff": 91.4,
+      "final": 35.2,
+      "playoff": 92.6,
       "projected_record": "14-0",
       "roster_id": 7,
       "team": "Inches matter"
     },
     {
-      "bye": 16.3,
-      "championship": 14.4,
+      "bye": 25.8,
+      "championship": 14.8,
       "division": 0.0,
-      "final": 31.7,
-      "playoff": 91.4,
+      "final": 33.6,
+      "playoff": 92.5,
       "projected_record": "14-0",
       "roster_id": 1,
       "team": "Gibbs Me Head"
     },
     {
-      "bye": 7.0,
-      "championship": 15.0,
+      "bye": 19.5,
+      "championship": 21.8,
       "division": 0.0,
-      "final": 33.7,
-      "playoff": 91.2,
+      "final": 42.9,
+      "playoff": 90.9,
       "projected_record": "13-1",
       "roster_id": 2,
       "team": "The Garrett Gatsby"
     },
     {
-      "bye": 4.4,
-      "championship": 4.4,
+      "bye": 5.0,
+      "championship": 2.3,
       "division": 0.0,
-      "final": 14.3,
-      "playoff": 87.9,
-      "projected_record": "12-2",
+      "final": 7.6,
+      "playoff": 74.4,
+      "projected_record": "13-1",
       "roster_id": 10,
       "team": "Parade of Horribles"
     },
     {
-      "bye": 4.3,
-      "championship": 5.1,
+      "bye": 4.5,
+      "championship": 2.9,
       "division": 0.0,
-      "final": 15.8,
-      "playoff": 85.0,
-      "projected_record": "11-3",
+      "final": 10.6,
+      "playoff": 82.4,
+      "projected_record": "13-1",
       "roster_id": 4,
       "team": "Stribling my lovehand"
     },
     {
-      "bye": 4.3,
+      "bye": 3.7,
       "championship": 2.2,
       "division": 0.0,
-      "final": 4.8,
-      "playoff": 22.3,
-      "projected_record": "9-5",
+      "final": 6.0,
+      "playoff": 42.1,
+      "projected_record": "11-3",
       "roster_id": 5,
       "team": "The chase show"
     },
     {
-      "bye": 4.3,
-      "championship": 2.1,
+      "bye": 3.6,
+      "championship": 1.8,
       "division": 0.0,
-      "final": 4.3,
-      "playoff": 13.6,
+      "final": 3.6,
+      "playoff": 10.7,
+      "projected_record": "8-6",
+      "roster_id": 8,
+      "team": "GT397"
+    },
+    {
+      "bye": 3.6,
+      "championship": 1.8,
+      "division": 0.0,
+      "final": 3.6,
+      "playoff": 10.8,
       "projected_record": "8-6",
       "roster_id": 9,
       "team": "Delta Stream"
     },
     {
-      "bye": 4.3,
-      "championship": 2.1,
+      "bye": 3.6,
+      "championship": 1.8,
       "division": 0.0,
-      "final": 4.3,
-      "playoff": 13.0,
-      "projected_record": "7-7",
-      "roster_id": 8,
-      "team": "GT397"
-    },
-    {
-      "bye": 4.3,
-      "championship": 2.1,
-      "division": 0.0,
-      "final": 4.3,
-      "playoff": 12.9,
+      "final": 3.6,
+      "playoff": 10.7,
       "projected_record": "3-11",
       "roster_id": 3,
       "team": "Unsolicited Nix Pics"
@@ -361,15 +361,15 @@
   "publication_assets": {
     "playoff_forecast": {
       "filename": "ballad_crier-playoff-forecast.png",
-      "generated_at": "2026-11-03T21:41:26.597100+00:00",
+      "generated_at": "2026-11-10T21:46:00.145638+00:00",
       "media_type": "image/png",
-      "sha256": "42c89c649b2b49b372dbf79e51251194aceb136354b37c2873a8ed6b747245bd"
+      "sha256": "dd63c6133d342dfdfe3667dd6ee71accb2a174966cc396d54dcc669bef5e1f70"
     },
     "power_rankings": {
       "filename": "ballad_crier-power-rankings.png",
-      "generated_at": "2026-11-03T21:41:26.597100+00:00",
+      "generated_at": "2026-11-10T21:46:00.145638+00:00",
       "media_type": "image/png",
-      "sha256": "f9dbe239b69f67befab129d914c773577a08ee31ffd5a9947cc21435298759ff"
+      "sha256": "1e4348d24b98b147c3628f35429538f8b3c6115b77e8f984112a010727815829"
     }
   },
   "publication_key": "ballad_crier",
@@ -381,7 +381,7 @@
       "DynastyProcess",
       "DynastySuperflex"
     ],
-    "generated_at": "2026-11-03T21:41:26.597100+00:00",
+    "generated_at": "2026-11-10T21:46:00.145638+00:00",
     "league_id": "1391793948728492032",
     "league_key": "broken_hearts",
     "lineup_sources": [
@@ -389,8 +389,8 @@
     ],
     "model_version": "cross-league-record-v2",
     "producer": "OTHER_LEAGUE_POWER_RANKS",
-    "ranking_week": 9,
-    "results_through_week": 8,
+    "ranking_week": 10,
+    "results_through_week": 9,
     "season": 2026
   }
 }
